@@ -1,0 +1,130 @@
+{% extends "property/base.html" %}
+{% load static  %}
+
+{% block content %}
+<section id="center" class="center_blog clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="center_blog_1 text-center clearfix">
+                <div class="col-sm-12">
+                    <div class="rows">
+                        {% for contact in settings.branches  %}
+                        <div class="col-sm-4 bg-secondary">
+                            <div class="card" style="width: 18rem;">
+                                <img src="{{contact.image}}" class="card-img-top" style="height: 350px; width:350px; border-radius: 10px;">
+                                <div class="card-body text-justify">
+                                    <h5 class="card-title">
+                                        <b>{{contact.name}}</b>
+                                    </h5>
+                                    <p class="card-text">
+                                        <b>Address:</b>
+                                        {{contact.address}}
+                                    </p>
+                                    <p class="card-text">
+                                        <b>Tel:</b>
+                                        <b>{{contact.tel}}</b>
+                                    </p>
+                                    <p class="card-text">
+                                        <b>Email:</b>
+                                        {{contact.email}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: 40px;">
+                    <h2 class="mgt">CONTACT US</h2>
+                    <!-- <h5><a href="#">Home</a>  /  Contact Us</h5> -->
+                </div>
+            </div>
+            <div class="contact_1 clearfix">
+                <div class="rows">
+                    {% for contact in settings.contacts %}
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img
+                                    style="width:100%; height: 300px !important;"
+                                    src="{{contact.image}}"
+                                    alt="avatar"
+                                    class="rounded-circle img-fluid"
+                                    style="width: 150px;"
+                                >
+                                <h5 class="my-3">{{contact.office}}</h5>
+                                <!-- <p class="text-muted mb-1">Full Stack Developer</p> -->
+                                <p class="text-muted mb-4">{{contact.address}}</p>
+                                <p class="text-muted mb-4">{{contact.tel}}</p>
+                                <p class="text-muted mb-4">{{contact.email}}</p>
+                                <!-- <div class="d-flex justify-content-center mb-2 mt-2">
+						<button type="button" class="btn btn-primary">Follow</button>
+						<button type="button" class="btn btn-outline-primary ms-1">Message</button>
+					  </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="contact_1 clearfix">
+                <div class="col-sm-12 space_all">
+                    <div class="col-sm-8">
+                        <div class="contact_1il clearfix">
+                            <h4 class="mgt">CONTACT US</h4>
+                            <select name="branch" id="" class="form-control">
+                                <option selected disabled>Choose</option>
+                                {% for branch in settings.branches  %}
+                                <option value="{{branch.id}}">{{branch.name}}</option>
+                                {% endfor %}
+                            </select>
+                            <input class="form-control" placeholder="First Name" type="text">
+                            <input class="form-control" placeholder="Last Name" type="text">
+                            <input class="form-control" placeholder="Email" type="text">
+                            <textarea placeholder="Message" class="form-control"></textarea>
+                            <h5>
+                                <a class="button" href="#">Submit</a>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="contact_1ir clearfix">
+                            <h4 class="head_1 mgt">CONTACT DETAILS</h4>
+                            <br>
+                            <br>
+                            <p class="col">
+                                {{settings.about}}
+                            </p>
+                            <ul>
+                                {% for x in settings.address %}
+                {% if x.position == 'left' %}
+                                <li>
+                                    <h6 class="col_3">
+                                        <i class="{{x.icon}}"></i>
+                                        {{x.title}}
+                                    </h6>
+                                </li>
+                                {% endif %}
+            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- google maps -->
+            <div class="contact_1 clearfix">
+                <div class="col-sm-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114964.53925916665!2d-80.29949920266738!3d25.782390733064336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b0a20ec8c111%3A0xff96f271ddad4f65!2sMiami%2C+FL%2C+USA!5e0!3m2!1sen!2sin!4v1530774403788"
+                        width="100%"
+                        height="400px"
+                        frameborder="0"
+                        style="border:0"
+                        allowfullscreen=""
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

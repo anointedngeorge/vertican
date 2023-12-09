@@ -1,0 +1,12 @@
+input:not([type='checkbox']):not([type='radio']), select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px; 
+  background-color: #fff;
+}
+
+/* button {
+  background-color: red !important;
+} */

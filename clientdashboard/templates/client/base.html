@@ -1,0 +1,180 @@
+{% load static %}
+{% static 'vendors' as vendor %}
+{% static 'build' as build %}
+{% static 'images' as image %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{image}}/favicon.ico" type="image/ico">
+        <title>{% block title %}{{title}}{% endblock %}</title>
+        <!-- Bootstrap -->
+        <link href="{{vendor}}/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{{vendor}}/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="{{vendor}}/nprogress/nprogress.css" rel="stylesheet">
+        <!-- iCheck -->
+        <link href="{{vendor}}/iCheck/skins/flat/green.css" rel="stylesheet">
+        <!-- bootstrap-progressbar -->
+        <link href="{{vendor}}/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+        <!-- JQVMap -->
+        <link href="{{vendor}}/jqvmap/dist/jqvmap.min.css" rel="stylesheet">
+        <!-- bootstrap-daterangepicker -->
+        <link href="{{vendor}}/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <link href="{{vendor}}/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        <link href="{{vendor}}/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="{{vendor}}/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="{{vendor}}/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="{{vendor}}/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <link href="{{build}}/css/custom.min.css" rel="stylesheet">
+        {% block extrahead %}
+        <!-- extra links here -->
+        {% endblock extrahead %}
+    </head>
+    <body class="nav-md">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="/client/" class="site_title">
+                                <i class="fa fa-paw"></i>
+                                <span>
+                                    {{ index_title }}
+                                </span>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- menu profile quick info -->
+                        <div class="profile clearfix">
+                            <div class="profile_pic">
+                                <img src="{{image}}/img.jpg" class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>Welcome,</span>
+                                <h2>{{ request.user.get_short_name }}</h2>
+                            </div>
+                        </div>
+                        <!-- /menu profile quick info -->
+                        <br>
+                        <!-- sidebar menu -->
+                        {% include "client/sidebar.html" %}
+                        <!-- /sidebar menu -->
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            <a data-toggle="tooltip" data-placement="top" title="Settings">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Logout"
+                                href="{% url 'client:logout' %}"
+                            >
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+                <!-- top navigation -->
+                {% include "client/topmenu.html" %}
+                <!-- /top navigation -->
+                <!-- page content -->
+                {% block content %}
+          
+        {% endblock content %}
+                <!-- /page content -->
+                <!-- footer content -->
+                <footer>
+                    <div class="pull-right">
+                        Gentelella - Bootstrap Admin Template by
+                        <a href="https://colorlib.com">Colorlib</a>
+                        {% include "client/modal.html" %}
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+            </div>
+        </div>
+        <!-- jQuery -->
+        <script src="{{vendor}}/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="{{vendor}}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- FastClick -->
+        <script src="{{vendor}}/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="{{vendor}}/nprogress/nprogress.js"></script>
+        <!-- Chart.js -->
+        <script src="{{vendor}}/Chart.js/dist/Chart.min.js"></script>
+        <!-- gauge.js -->
+        <script src="{{vendor}}/gauge.js/dist/gauge.min.js"></script>
+        <!-- bootstrap-progressbar -->
+        <script src="{{vendor}}/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+        <!-- iCheck -->
+        <script src="{{vendor}}/iCheck/icheck.min.js"></script>
+        <!-- Skycons -->
+        <script src="{{vendor}}/skycons/skycons.js"></script>
+        <!-- Flot -->
+        <script src="{{vendor}}/Flot/jquery.flot.js"></script>
+        <script src="{{vendor}}/Flot/jquery.flot.pie.js"></script>
+        <script src="{{vendor}}/Flot/jquery.flot.time.js"></script>
+        <script src="{{vendor}}/Flot/jquery.flot.stack.js"></script>
+        <script src="{{vendor}}/Flot/jquery.flot.resize.js"></script>
+        <!-- Flot plugins -->
+        <script src="{{vendor}}/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+        <script src="{{vendor}}/flot-spline/js/jquery.flot.spline.min.js"></script>
+        <script src="{{vendor}}/flot.curvedlines/curvedLines.js"></script>
+        <!-- DateJS -->
+        <script src="{{vendor}}/DateJS/build/date.js"></script>
+        <!-- JQVMap -->
+        <script src="{{vendor}}/jqvmap/dist/jquery.vmap.js"></script>
+        <script src="{{vendor}}/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+        <script src="{{vendor}}/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+        <!-- bootstrap-daterangepicker -->
+        <script src="{{vendor}}/moment/min/moment.min.js"></script>
+        <script src="{{vendor}}/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- Datatables -->
+        <script src="{{vendor}}/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="{{vendor}}/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="{{vendor}}/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="{{vendor}}/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="{{vendor}}/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="{{vendor}}/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="{{vendor}}/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="{{vendor}}/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="{{vendor}}/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="{{vendor}}/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="{{vendor}}/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        <script src="{{vendor}}/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+        <script src="{{vendor}}/jszip/dist/jszip.min.js"></script>
+        <script src="{{vendor}}/pdfmake/build/pdfmake.min.js"></script>
+        <script src="{{vendor}}/pdfmake/build/vfs_fonts.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="{{build}}/js/custom.min.js" defer></script>
+        <script>
+            const modalBtns =  document.querySelectorAll(".modalPages");
+            modalBtns.forEach(function(element, index) {
+                document.getElementById(element.id).addEventListener('click', async function(el) {
+                    el.preventDefault();
+                    const daset =  el.target.dataset;
+                    const req = await fetch(daset.url);
+                    const res = await req.text();
+                    document.querySelector("#modal-body").innerHTML = res;
+                });
+            });
+        </script>
+    </body>
+</html>

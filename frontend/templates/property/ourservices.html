@@ -1,0 +1,69 @@
+{% load static %}
+<section id="user">
+    <div class="container">
+        <div class="row">
+            <div class="feature_1 clearfix">
+                <div class="col-sm-12">
+                    <h4 class="mgt">
+                        Our
+                        <br>
+                        <span class="col_1">Services</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="user_1 clearfix">
+                <div id="Carousel" class="carousel slide">
+                    <ol class="carousel-indicators">
+                        <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#Carousel" data-slide-to="1" class=""></li>
+                        <li data-target="#Carousel" data-slide-to="2" class=""></li>
+                    </ol>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <!-- start -->
+                        {% for service in services %}
+                        <div class="item {% if forloop.counter == 1 %}
+                        active
+                        {% endif %}">
+                            <div class="row">
+                                {% for ser in service %}
+                                <!-- loop start here -->
+                                <div class="col-sm-4">
+                                    <div class="testimonial_hm text-center clearfix">
+                                        <img
+                                            src="{% if ser.image_thumbnail %}
+                                          {{ser.image_thumbnail.url}}
+                                        {% endif %}"
+                                            alt="abc"
+                                            class="img-circle mgt"
+                                            width="100"
+                                            height="100"
+                                            style="background-position: center bottom;"
+                                        >
+                                        {{ser.content|safe|slice:"0:200"}}
+                                        <hr>
+                                        <p>{{ser.title|slice:"0:50"}}</p>
+                                        <!-- <span class="span_1">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </span> -->
+                                        <!-- <h5>{{service.title}}</h5> -->
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- loop ends here -->
+                            </div>
+                            <!--.row-->
+                        </div>
+                        <!-- end -->
+                        {% endfor %}
+                    </div>
+                    <!--.carousel-inner-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+{% extends "property/base.html" %}
+{% load static  %}
+
+{% block content %}
+<section id="center" class="center_detail clearfix">
+    <div class="container">
+        {% for x in television %}
+        <div class="col-sm-6 mt-4 mb-4">
+            <h3>{{x.title}}</h3>
+            <p>{{x.youtube|safe}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

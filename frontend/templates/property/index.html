@@ -1,0 +1,701 @@
+{% extends "property/base.html" %}
+{% load static  %}
+{% static 'property/assets' as staticasset %}
+{% load humanize %}
+{% load tz %}
+
+{% block content %}
+<section id="center" class="center_home clearfix">
+    <div class="center_main clearfix">
+        <div class="w3-content w3-section clearfix">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    {% for slide in sliders  %}
+                    <div class="item {% if slide.is_active %} active {% endif %}">
+                        <img style="width:100%; height:200px !important;" src="media/{{slide.image}}" alt="Chania">
+                        <div class="carousel-caption">
+                            <h3 style="color:#fff;">{{slide.title}}</h3>
+                            <p>{{slide.subtitle}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- <div class="center_main_1 clearfix">
+	  <div class="col-sm-8"></div>
+	  <div class="col-sm-4">
+	   <div class="center_main_1r clearfix">
+		 <h5 class="mgt col">Property Status</h5>
+		 <select class="form-control" name="property">
+			<option value="">Any Status</option>
+			<option value="for-sale">For Sale</option>
+			<option value="for-rent">For Rent</option>
+			<option value="sold">Sold</option>
+		</select>
+		<h5 class="col">Property Type</h5>
+		<select class="form-control" name="property">
+			<option value="">Any Type</option>
+			<option value="family-house">Family House</option>
+			<option value="apartment">Apartment</option>
+			<option value="condo">Condo</option>
+		</select>
+		<h5 class="col">Location</h5>
+		<select class="form-control" name="Location">
+			<option value="">Any Location</option>
+			<option value="family-house">New York</option>
+			<option value="apartment">Los Angeles</option>
+			<option value="condo">Chicago</option>
+			<option value="condo">Philadelphia</option>
+			<option value="condo">San Francisco</option>
+	   </select>
+	   <h5 class="col">Price</h5>
+		<select class="form-control" name="Price">
+			<option value="">$54,000 - $130,000</option>
+			<option value="family-house">$44,000 - $140,000</option>
+			<option value="apartment">$74,000 - $150,000</option>
+			<option value="condo">$84,000 - $160,000</option>
+			<option value="condo">$94,000 - $170,000</option>
+			<option value="condo">$44,000 - $120,000</option>
+	   </select>
+	   <div class="center_main_1ri clearfix">
+		<div class="col-sm-6 space_left">
+		 <h5 class="col">Beds</h5>
+		 <select class="form-control" name="beds" id="beds">
+			<option value="">Any</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		 </select>
+		</div>
+		<div class="col-sm-6 space_right">
+		 <h5 class="col">Baths</h5>
+		 <select class="form-control" name="beds" id="beds">
+			<option value="">Any</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		 </select>
+		</div>
+	   </div>
+	   <div class="center_main_1ri clearfix">
+		<div class="col-sm-6 space_left">
+		 <h5 class="col">Area (Min)</h5>
+		 <div class="input-group number-spinner">
+					<span class="input-group-btn">
+						<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+					</span>
+					<input type="text" class="form-control mgt text-center" value="1">
+					<span class="input-group-btn">
+						<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+					</span>
+		</div>
+		</div>
+		<div class="col-sm-6 space_right">
+		 <h5 class="col">Area (Max)</h5>
+		 <div class="input-group number-spinner">
+					<span class="input-group-btn">
+						<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+					</span>
+					<input type="text" class="form-control mgt text-center" value="1">
+					<span class="input-group-btn">
+						<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+					</span>
+		</div>
+		</div>
+	   </div>
+	   <h5 class="text-center"><a class="button_1 block" href="#">SEARCH PROPERTY</a></h5>
+	   </div>
+	  </div>
+	 </div> -->
+    </div>
+</section>
+<!-- beginning of properties -->
+{% include "property/index_property.html" %}
+<!-- end of properties -->
+{% include "property/ourservices.html" %}
+<!-- <section id="feature_o">
+	 <div class="container">
+	  <div class="row">
+	   <div class="feature_1 clearfix">
+		<div class="col-sm-12">
+		   <h4 class="mgt">FEATURED <br><span class="col_1">PROPERTIES</span></h4>
+		</div>
+	   </div>
+	   <div class="feature_2 clearfix">
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/4.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_2" href="#">For Rent</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/5.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_4" href="#">For Sale</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/6.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_2" href="#">For Rent</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+	   </div>
+	   <div class="feature_2 clearfix">
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/7.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_2" href="#">For Rent</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/8.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_4" href="#">For Sale</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+		<div class="col-sm-4">
+						 <div class="feature_2im clearfix">
+								   <div class="feature_2im1 clearfix">
+							 <a href="#"><img src="{% static 'property/assets' %}/img/9.jpg" class="iw" alt="abc"></a>
+							</div>
+								<div class="feature_2im2 clearfix">
+								 <h6 class="mgt"><a class="bg_1" href="#">Featured</a></h6>
+								 <h6 class="pull-right mgt"><a class="bg_2" href="#">For Rent</a></h6>
+								</div>
+								<div class="feature_2im4 clearfix">
+								 <div class="col-sm-6 space_left">
+								   <h6><a class="bg_3" href="#">Family Home</a></h6>
+								 </div>
+								 <div class="col-sm-6 feature_2im4r space_right">
+								   <ul class="mgt">
+									<li><a href="#"><i class="fa fa-link"></i></a></li>
+									<li><a href="#"><i class="fa fa-video-camera"></i></a></li>
+									<li><a href="#"><i class="fa fa-photo"></i></a></li>
+								   </ul>
+								 </div>
+								</div>
+						 </div>
+						 <div class="feature_2m_last clearfix">
+						  <h4 class="mgt bold"><a href="#">Lorem House Luxury Villa</a></h4>
+						  <p><i class="fa fa-map-marker"></i> Fst Su, 67 - Central Park North, OZD</p><br>
+						  <h6><i class="fa fa-hotel col_1"></i> 4 Bedrooms <span class="pull-right"><i class="fa fa-building-o col_1"></i> 3 Bathrooms</span></h6>
+						  <h6><i class="fa fa-object-group col_1"></i> 620 sq ft <span class="pull-right"><i class="fa fa-gear col_1"></i> 2 Garages</span></h6><br>
+						  <h5 class="bold"><a href="#">$ 130,000 <span class="pull-right"><i class="fa fa-exchange"></i> <i class="fa fa-share-alt"></i> <i class="fa fa-heart-o"></i></span></a></h5>
+						  <div class="feature_2m_last_i clearfix">
+							<h6><a href="#"><i class="fa fa-user"></i> Eget Nulla <span class="pull-right"><i class="fa fa-calendar"></i> 3 months ago</span></a></h6>
+						  </div>
+						 </div>
+						</div>
+	   </div>
+	   <div class="feature_o_last clearfix">
+		<div class="col-sm-12">
+		 <h5 class="text-center mgt"><a class="button mgt" href="#">View All <i class="fa fa-long-arrow-right"></i></a></h5>
+		</div>
+	   </div>
+	  </div>
+	 </div>
+	</section> -->
+<section id="popular">
+    <div class="container">
+        <div class="row">
+            <div class="feature_1 clearfix">
+                <div class="col-sm-12">
+                    <h4 class="mgt">
+                        MOST POPULAR
+                        <br>
+                        <span class="col_1">PLACES</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="popular_1 clearfix">
+                <div class="col-sm-12">
+                    <div class="popular_1i clearfix">
+                        <div class="row">
+                            {% for x in  youtube %}
+                            <div class="col-lg-4">
+                                <div class="popular_1i clearfix">
+                                    <div class="popular_1i1 clearfix">
+                                        <h4>{{x.title}}</h4>
+                                        <iframe
+                                            style="width:100%; height: 300px;"
+                                            src="https://www.youtube.com/embed/{{x.link}}"
+                                            title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen
+                                        ></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="team_h">
+    <div class="container">
+        <div class="row">
+            <div class="feature_1 clearfix">
+                <div class="col-sm-12">
+                    <h4 class="mgt">
+                        MEET OUR
+                        <br>
+                        <span class="col_1">AGENTS</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="team_h_1 clearfix">
+                <div class="col-sm-3">
+                    <div class="team_h_1i clearfix">
+                        <div class="profile clearfix">
+                            <div class="img-box">
+                                <img src="{% static 'property/assets' %}/img/15.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-facebook"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-twitter"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-linkedin"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-instagram"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <div class="profilei text-center clearfix">
+                                <h3 class="mgt">Arcu Eget</h3>
+                                <h5>Real Estate Agent</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h5>
+                                    <a class="button" href="#">View Profile</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team_h_1i clearfix">
+                        <div class="profile clearfix">
+                            <div class="img-box">
+                                <img src="{% static 'property/assets' %}/img/16.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-facebook"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-twitter"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-linkedin"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-instagram"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <div class="profilei text-center clearfix">
+                                <h3 class="mgt">Mauris Massa</h3>
+                                <h5>Real Estate Agent</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h5>
+                                    <a class="button" href="#">View Profile</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team_h_1i clearfix">
+                        <div class="profile clearfix">
+                            <div class="img-box">
+                                <img src="{% static 'property/assets' %}/img/17.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-facebook"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-twitter"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-linkedin"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-instagram"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <div class="profilei text-center clearfix">
+                                <h3 class="mgt">Ante Dapibus</h3>
+                                <h5>Real Estate Agent</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h5>
+                                    <a class="button" href="#">View Profile</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team_h_1i clearfix">
+                        <div class="profile clearfix">
+                            <div class="img-box">
+                                <img src="{% static 'property/assets' %}/img/18.jpg" class="img-responsive">
+                                <ul class="text-center">
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-facebook"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-twitter"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-linkedin"></i>
+                                        </li>
+                                    </a>
+                                    <a href="#">
+                                        <li>
+                                            <i class="fa fa-instagram"></i>
+                                        </li>
+                                    </a>
+                                </ul>
+                            </div>
+                            <div class="profilei text-center clearfix">
+                                <h3 class="mgt">Nec Odio</h3>
+                                <h5>Real Estate Agent</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h5>
+                                    <a class="button" href="#">View Profile</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="news_h">
+    <div class="container">
+        <div class="row">
+            <div class="feature_1 clearfix">
+                <div class="col-sm-12">
+                    <h4 class="mgt">
+                        LATEST
+                        <br>
+                        <span class="col_1">NEWS</span>
+                    </h4>
+                </div>
+            </div>
+            {% for latest_new in latest_news %}
+            <div class="news_h_1 clearfix">
+                {% for lastest in latest_new %}
+                <div class="col-sm-6">
+                    <div class="news_h_1i clearfix">
+                        <div class="col-sm-5 space_all">
+                            <div class="news_h_1ir clearfix">
+                                <a href="#">
+                                    <img src="{% if lastest.image_thumbnail %}
+                                        {{lastest.image_thumbnail.url}}
+                                        {% endif %}" class="iw" alt="abc">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-7 space_all">
+                            <div class="news_h_1il clearfix">
+                                <h4 class="mgt">
+                                    <a href="#">{{lastest.title}}</a>
+                                </h4>
+                                <p>{{lastest.created}}  /  {{lastest.posted_by}}</p>
+                                <!-- {{lastest.content|safe|slice:"0:100"}} -->
+                                <div class="news_h_1ili clearfix">
+                                    <div class="col-sm-4 space_all">
+                                        <h6>
+                                            <a class="col_1 bold" href="#">Read more...</a>
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-8 space_right">
+                                        <ul>
+                                            <li>
+                                                <i class="fa fa-heart col_1"></i>
+                                                336
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-comment col_1"></i>
+                                                39
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-share-alt col_1"></i>
+                                                142
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% include "property/testimonal.html" %}
+<section id="about_home">
+    <div class="container">
+        <div class="row">
+            <div class="about_home_1 clearfix">
+                <div class="col-sm-3">
+                    <div class="about_home_1i clearfix">
+                        <span class="span_1">
+                            <i class="fa fa-home col_1"></i>
+                        </span>
+                        <h3 class="mgt">
+                            350
+                            <br>
+                            <span class="span_2">Sold Houses</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="about_home_1i clearfix">
+                        <span class="span_1">
+                            <i class="fa fa-list col_1"></i>
+                        </span>
+                        <h3 class="mgt">
+                            450
+                            <br>
+                            <span class="span_2">Daily Listings</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="about_home_1i clearfix">
+                        <span class="span_1">
+                            <i class="fa fa-users col_1"></i>
+                        </span>
+                        <h3 class="mgt">
+                            250
+                            <br>
+                            <span class="span_2">Expert Agents</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="about_home_1i clearfix">
+                        <span class="span_1">
+                            <i class="fa fa-trophy col_1"></i>
+                        </span>
+                        <h3 class="mgt">
+                            150
+                            <br>
+                            <span class="span_2">Won Awards</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

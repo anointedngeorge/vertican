@@ -1,0 +1,33 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+  
+<div class="container">
+    
+    <table>
+        <tr>
+            <td>
+                <a href="export-file/" class="btn btn-sm btn-primary">Export All</a>
+            </td>
+
+            <td>
+                <form 
+                method="POST"
+                action="import-file/" 
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                    <label >
+                        Upload file
+                        <input type="file" name="file">
+                        <input type="submit" value="Upload">
+                    </label>
+                    
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+{{ block.super }}
+{% endblock content %}

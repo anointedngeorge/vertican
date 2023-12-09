@@ -1,0 +1,131 @@
+{% load static %}
+{% static 'property/assets' as staticasset %}
+{% load humanize %}
+{% load tz %}
+
+
+{% for property in properties %}
+<section id="feature">
+    <div class="container">
+        <div class="row">
+            <div class="feature_1 clearfix">
+                <div class="col-sm-12">
+                    <h4 class="mgt">
+                        {{property.name}}
+                        <br>
+                        <span class="col_1">PROPERTIES</span>
+                    </h4>
+                </div>
+            </div>
+            <div class="feature_2 clearfix">
+                <div id="carousel-example{{property.shortname}}" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            {% for item in property.data|slice:"0:3"  %}
+                            <div class="col-sm-4">
+                                <div class="feature_2im clearfix">
+                                    <div class="feature_2im1 clearfix">
+                                        <a href="/page/listing">
+                                            <img
+                                                src="{% if item.image_thumbnail %}
+											  {{item.image_thumbnail.url}}
+											{% endif %}"
+                                                class="iw"
+                                                alt="abc"
+                                                height="200"
+                                                width="200"
+                                            >
+                                        </a>
+                                    </div>
+                                    <div class="feature_2im2 clearfix">
+                                        <h6 class="pull-right mgt">
+                                            <a class="bg_2" href="#">{{item.property_state}}</a>
+                                        </h6>
+                                    </div>
+                                    <div class="feature_2im4 clearfix">
+                                        <div class="col-sm-6 space_left">
+                                            <!-- <h6><a class="bg_3" href="#">Family Home</a></h6> --></div>
+                                        <div class="col-sm-6 feature_2im4r space_right">
+                                            <ul class="mgt">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-link"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-video-camera"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-photo"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature_2m_last clearfix">
+                                    <h4 class="mgt bold">
+                                        <a href="#">{{item.property_title}}</a>
+                                    </h4>
+                                    <p>
+                                        <i class="fa fa-map-marker"></i>
+                                        {{item.property_location}}
+                                    </p>
+                                    <br>
+                                    <h6>
+                                        <i class="fa fa-hotel col_1"></i>
+                                        Type: {{item.property_type}}
+                                        <span class="pull-right">
+                                            <i class="fa fa-building-o col_1"></i>
+                                            Status: {{item.status}}
+                                        </span>
+                                    </h6>
+                                    <h6>
+                                        <i class="fa fa-object-group col_1"></i>
+                                        Qty: {{item.pro_actual_qty}}
+                                        <h5 class="bold">
+                                            <a href="#">
+                                                {{item.pro_actual_price | intcomma}}
+                                                <span class="pull-right">
+                                                    <i class="fa fa-exchange"></i>
+                                                    <i class="fa fa-share-alt"></i>
+                                                    <i class="fa fa-heart-o"></i>
+                                                </span>
+                                            </a>
+                                        </h5>
+                                        <div class="feature_2m_last_i clearfix">
+                                            <h6>
+                                                <a href="#">
+                                                    <i class="fa fa-user"></i>
+                                                    {{item.posted_by}}
+                                                    <span class="pull-right">
+                                                        <i class="fa fa-calendar"></i>
+                                                        {{item.created}}
+                                                    </span>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature_2_last text-center clearfix">
+                        <div class="col-sm-12">
+                            <!-- Controls -->
+                            <div class="controls">
+                                <a class="left fa fa-chevron-left btn btn-success" href="#carousel-example{{property.shortname}}" data-slide="prev"></a>
+                                <a class="right fa fa-chevron-right btn btn-success" href="#carousel-example{{property.shortname}}" data-slide="next"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}

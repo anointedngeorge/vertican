@@ -1,0 +1,10 @@
+/env1
+/vertican/settings/dev_settings.py
+
+*/__pycache__
+**/__pycache__
+***/__pycache__
+
+db.sqilite3
+*/db.sqilite3
+*/migrations

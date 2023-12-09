@@ -1,0 +1,618 @@
+{% extends "client/base.html" %}
+
+{% load table_tags %}
+{% load custom_crispy_forms %}
+{% load table_tags %}
+{% load navigation_tags %}
+
+{% load static %}
+{% static 'vendors' as vendor %}
+{% static 'build' as build %}
+{% static 'images' as image %}
+
+{% block content %}
+<div class="right_col" role="main">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>
+                User Report
+                <small>Activity report</small>
+            </h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a
+                        href="#"
+                        class="dropdown-toggle"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-expanded="false"
+                    >
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Settings 1</a>
+                        <a class="dropdown-item" href="#">Settings 2</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="close-link">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="col-md-3 col-sm-3  profile_left">
+                <div class="profile_img">
+                    <div id="crop-avatar">
+                        <!-- Current avatar -->
+                        <img
+                            class="img-responsive avatar-view"
+                            src="{{image}}/picture.jpg"
+                            alt="Avatar"
+                            title="Change the avatar"
+                        >
+                    </div>
+                </div>
+                <h3>{{request.user.get_short_name}}</h3>
+                <ul class="list-unstyled user_data">
+                    <li>
+                        <i class="fa fa-map-marker user-profile-icon"></i>
+                        San Francisco, California, USA
+                    </li>
+                    <li>
+                        <i class="fa fa-briefcase user-profile-icon"></i>
+                        Software Engineer
+                    </li>
+                    <li class="m-top-xs">
+                        <i class="fa fa-external-link user-profile-icon"></i>
+                        <a href="http://www.kimlabs.com/profile/" target="_blank">www.kimlabs.com</a>
+                    </li>
+                </ul>
+                <!-- end of skills -->
+            </div>
+            <div class="col-md-9 col-sm-9 ">
+                <div class="profile_title">
+                    <div class="col-md-6">
+                        <h2>User Activity Report</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="reportrange" class="pull-right" style="margin-top: 5px; background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #E6E9ED">
+                            <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                            <span>August 25, 2023 - September 23, 2023</span>
+                            <b class="caret"></b>
+                        </div>
+                    </div>
+                </div>
+                <!-- start of user-activity-graph -->
+                <div id="graph_bar" style="width: 100%; height: 280px; position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                    <svg
+                        height="280"
+                        version="1.1"
+                        width="450"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        style="overflow: hidden; position: relative; left: -0.75px; top: -0.1875px;"
+                    >
+                        <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël @@VERSION</desc>
+                        <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+                        <text
+                            x="42.85546875"
+                            y="213.293638648625"
+                            text-anchor="end"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan>
+                        </text>
+                        <path
+                            fill="none"
+                            stroke="#aaaaaa"
+                            d="M55.35546875,213.293638648625H425"
+                            stroke-width="0.5"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                        ></path>
+                        <text
+                            x="42.85546875"
+                            y="166.22022898646875"
+                            text-anchor="end"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                        >
+                            <tspan dy="3.999998883929692" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">750</tspan>
+                        </text>
+                        <path
+                            fill="none"
+                            stroke="#aaaaaa"
+                            d="M55.35546875,166.22022898646875H425"
+                            stroke-width="0.5"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                        ></path>
+                        <text
+                            x="42.85546875"
+                            y="119.1468193243125"
+                            text-anchor="end"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                        >
+                            <tspan dy="3.999999255953128" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1,500</tspan>
+                        </text>
+                        <path
+                            fill="none"
+                            stroke="#aaaaaa"
+                            d="M55.35546875,119.1468193243125H425"
+                            stroke-width="0.5"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                        ></path>
+                        <text
+                            x="42.85546875"
+                            y="72.07340966215625"
+                            text-anchor="end"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                        >
+                            <tspan dy="3.999999627976564" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2,250</tspan>
+                        </text>
+                        <path
+                            fill="none"
+                            stroke="#aaaaaa"
+                            d="M55.35546875,72.07340966215625H425"
+                            stroke-width="0.5"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                        ></path>
+                        <text
+                            x="42.85546875"
+                            y="25"
+                            text-anchor="end"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                        >
+                            <tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3,000</tspan>
+                        </text>
+                        <path
+                            fill="none"
+                            stroke="#aaaaaa"
+                            d="M55.35546875,25H425"
+                            stroke-width="0.5"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+                        ></path>
+                        <text
+                            x="406.5177734375"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-68.2857,288.3455)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Other</tspan>
+                        </text>
+                        <text
+                            x="369.5533203125"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-96.2878,282.07)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 6S Plus</tspan>
+                        </text>
+                        <text
+                            x="295.6244140625"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-106.3811,237.3718)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 6 Plus</tspan>
+                        </text>
+                        <text
+                            x="221.6955078125"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-112.1034,189.6131)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 5S</tspan>
+                        </text>
+                        <text
+                            x="184.7310546875"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-115.6088,166.2983)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 5</tspan>
+                        </text>
+                        <text
+                            x="147.7666015625"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-129.2939,149.8844)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 3GS</tspan>
+                        </text>
+                        <text
+                            x="110.8021484375"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-132.1582,126.0073)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 4S</tspan>
+                        </text>
+                        <text
+                            x="73.8376953125"
+                            y="225.793638648625"
+                            text-anchor="middle"
+                            font-family="sans-serif"
+                            font-size="12px"
+                            stroke="none"
+                            fill="#888888"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;"
+                            font-weight="normal"
+                            transform="matrix(0.8192,-0.5736,0.5736,0.8192,-135.6637,102.6925)"
+                        >
+                            <tspan dy="3.9999985119062558" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">iPhone 4</tspan>
+                        </text>
+                        <rect
+                            x="59.976025390625"
+                            y="189.44311108646585"
+                            width="27.723339843749997"
+                            height="23.850527562159158"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="96.940478515625"
+                            y="172.18286087700855"
+                            width="27.723339843749997"
+                            height="41.110777771616455"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="133.90493164062502"
+                            y="196.0333884391677"
+                            width="27.723339843749997"
+                            height="17.260250209457297"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="170.869384765625"
+                            y="114.69053654296171"
+                            width="27.723339843749997"
+                            height="98.6031021056633"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="207.833837890625"
+                            y="172.18286087700855"
+                            width="27.723339843749997"
+                            height="41.110777771616455"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="244.798291015625"
+                            y="78.09880609891226"
+                            width="27.723339843749997"
+                            height="135.19483254971274"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="281.762744140625"
+                            y="141.49099777728267"
+                            width="27.723339843749997"
+                            height="71.80264087134233"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="318.727197265625"
+                            y="64.47889956999504"
+                            width="27.723339843749997"
+                            height="148.81473907862997"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="355.691650390625"
+                            y="120.96699116458255"
+                            width="27.723339843749997"
+                            height="92.32664748404245"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                        <rect
+                            x="392.656103515625"
+                            y="127.24344578620338"
+                            width="27.723339843749997"
+                            height="86.05019286242162"
+                            rx="0"
+                            ry="0"
+                            fill="#26b99a"
+                            stroke="none"
+                            fill-opacity="1"
+                            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 1;"
+                        ></rect>
+                    </svg>
+                    <div class="morris-hover morris-default-style" style="left: 37.2877px; top: 111px; display: none;">
+                        <div class="morris-hover-row-label">iPhone 4</div>
+                        <div class="morris-hover-point" style="color: #26B99A">
+                            Geekbench: 380
+                        </div>
+                    </div>
+                </div>
+                <!-- end of user-activity-graph -->
+                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a
+                                href="#tab_content1"
+                                id="home-tab"
+                                role="tab"
+                                data-toggle="tab"
+                                aria-expanded="true"
+                            >Recent Activity</a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a
+                                href="#tab_content2"
+                                role="tab"
+                                id="profile-tab"
+                                data-toggle="tab"
+                                aria-expanded="false"
+                            >Projects Worked on</a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a
+                                href="#tab_content3"
+                                role="tab"
+                                id="profile-tab2"
+                                data-toggle="tab"
+                                aria-expanded="false"
+                            >Profile</a>
+                        </li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div
+                            role="tabpanel"
+                            class="tab-pane active "
+                            id="tab_content1"
+                            aria-labelledby="home-tab"
+                        >
+                            <!-- start recent activity -->
+                            <ul class="messages">
+                                {% for property in viewobject  %}
+                                <li>
+                                    <img src="{% if property.property.image_thumbnail  %}
+                                        {{property.property.image_thumbnail}}
+                                    {% else %}
+                                        {{image}}/img.jpg
+                                    {% endif %}" class="avatar" alt="Avatar">
+                                    <div class="message_date">
+                                        <h3 class="date text-info">24</h3>
+                                        <p class="month">May</p>
+                                    </div>
+                                    <div class="message_wrapper">
+                                        <h4 class="heading">{{property.property.property_title}}</h4>
+                                        <blockquote class="message">
+                                            {{property.property.property_desc}}
+                                        </blockquote>
+                                        <br>
+                                        <p class="url">
+                                            <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
+                                            <a href="#">
+                                                <i class="fa fa-paperclip"></i>
+                                                User Acceptance Test.doc
+                                            </a>
+                                        </p>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <!-- end recent activity -->
+                        </div>
+                        <div
+                            role="tabpanel"
+                            class="tab-pane fade"
+                            id="tab_content2"
+                            aria-labelledby="profile-tab"
+                        >
+                            <!-- start user projects -->
+                            <table class="data table table-striped no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Project Name</th>
+                                        <th>Client Company</th>
+                                        <th class="hidden-phone">Hours Spent</th>
+                                        <th>Contribution</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>New Company Takeover Review</td>
+                                        <td>Deveint Inc</td>
+                                        <td class="hidden-phone">18</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar progress-bar-success"
+                                                    data-transitiongoal="35"
+                                                    aria-valuenow="35"
+                                                    style="width: 35%;"
+                                                ></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>New Partner Contracts Consultanci</td>
+                                        <td>Deveint Inc</td>
+                                        <td class="hidden-phone">13</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar progress-bar-danger"
+                                                    data-transitiongoal="15"
+                                                    aria-valuenow="15"
+                                                    style="width: 15%;"
+                                                ></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Partners and Inverstors report</td>
+                                        <td>Deveint Inc</td>
+                                        <td class="hidden-phone">30</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar progress-bar-success"
+                                                    data-transitiongoal="45"
+                                                    aria-valuenow="45"
+                                                    style="width: 45%;"
+                                                ></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>New Company Takeover Review</td>
+                                        <td>Deveint Inc</td>
+                                        <td class="hidden-phone">28</td>
+                                        <td class="vertical-align-mid">
+                                            <div class="progress">
+                                                <div
+                                                    class="progress-bar progress-bar-success"
+                                                    data-transitiongoal="75"
+                                                    aria-valuenow="75"
+                                                    style="width: 75%;"
+                                                ></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- end user projects -->
+                        </div>
+                        <div
+                            role="tabpanel"
+                            class="tab-pane fade"
+                            id="tab_content3"
+                            aria-labelledby="profile-tab"
+                        >
+                            <p>
+                                xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                    photo booth letterpress, commodo enim craft beer mlkshk
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

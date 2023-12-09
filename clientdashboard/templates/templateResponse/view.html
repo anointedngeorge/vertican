@@ -1,0 +1,9 @@
+{% load table_tags %}
+<div class="right_co col-lg-12" role="main">
+    <h3>{{title}}</h3>
+    <table class="table">
+        <tbody>
+            {% ObjectView object=viewobject fields=list_view %}
+        </tbody>
+    </table>
+</div>

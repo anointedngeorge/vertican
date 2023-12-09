@@ -1,0 +1,32 @@
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+        <!-- <h3>General</h3> -->
+        <ul class="nav side-menu">
+            <li>
+                <a href="/client/">
+                    <i class="fa fa-home"></i>
+                    Home
+                </a>
+            </li>
+            {% for app_list in app_lists  %}
+            <li>
+                <a>
+                    <i class="fa fa-circle"></i>
+                    {{app_list.name}}
+                    <span class="fa fa-chevron-down"></span>
+                </a>
+                <ul class="nav child_menu">
+                    {% for  model in app_list.models  %}
+                    <li>
+                        <a href="{{ model.admin_url }}">{{model.name}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- script: $325 - 313,625
+ hosting: -$102.00 for one year =  40,414.2 - 965
+ mail clients: mailgun monthly is 35 dollars 33,775 -->

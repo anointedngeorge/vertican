@@ -1,0 +1,13 @@
+<!-- {% extends "client/base.html" -->
+{% load table_tags %}
+{% block content %}
+<div class="right_co col-lg-12" role="main">
+    <!-- /top tiles -->
+    <!-- <h3>{{title}}</h3> -->
+    <div class="table-responsive">
+        <table class="table">
+            {% ObjectViewArray object=viewobject fields=list_view %}
+        </table>
+    </div>
+</div>
+{% endblock content %}

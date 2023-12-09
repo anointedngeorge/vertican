@@ -1,0 +1,64 @@
+{% extends "client/base.html" %}
+{% load table_tags %}
+{% load custom_crispy_forms %}
+{% load table_tags %}
+{% load navigation_tags %}
+
+{% load static %}
+{% static 'vendors' as vendor %}
+{% static 'build' as build %}
+{% static 'images' as image %}
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'custom/form_style.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<div class="right_col" role="main" style="min-height: 5828px;">
+    <div class="">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <ul class="panel_toolbox text">
+                        {% nav_tags host=request.META.HTTP_HOST opts=opts classname="mr-4 text text-link" site='client' %}
+                    </ul>
+                    <h2>
+                        Change
+                        <small>
+                            <span class="text text-primary">{{page_title}}</span>
+                        </small>
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+
+                            <form 
+                                {% if has_file_field %} 
+                                enctype="multipart/form-data" 
+                                {% endif %} {% if form_url %} action="{{ form_url }}" 
+                                {% endif %} method="post" id="{{ opts.model_name }}_form"
+                                
+                                >
+                                  {% csrf_token %}
+                           
+                                  {{ form|render_form4 }}
+                  
+                                  </div>
+                                  <div class="form-group mt-4">
+                                      <button type="submit" class="btn btn-primary ">Submit</button>
+                                  </div>
+                            </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
