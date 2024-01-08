@@ -8,3 +8,8 @@
 db.sqilite3
 */db.sqilite3
 */migrations
+.venv/
+*/.venv
+*/.venv/
+.env
+*.env

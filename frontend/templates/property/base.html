@@ -15,6 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
         <script src="{% static 'property/assets/js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'property/assets/js/bootstrap.min.js' %}"></script>
+
     </head>
     <body>
         <section id="top">
@@ -190,9 +191,10 @@
                                         {{settings.site_title}}
                                     </span>
                                 </a>
-                                <p class="col">
+                                <section class="col" id="foot-about" style="color:#cacaca !important;">
                                     {{settings.about|safe}}
-                                </p>
+                                </section>
+
                                 <ul>
                                     {% for x in settings.address %}
                 {% if x.position == 'left' %}
