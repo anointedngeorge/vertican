@@ -85,7 +85,8 @@
                             <i></i>
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
-                                src="{% static 'site_logo' %}/{{settings.site_logo}}"
+                                src="{{ settings.site_logo }}"
+                                {% comment %} src="{% static 'site_logo' %}/{{settings.site_logo}}" {% endcomment %}
                                 alt=""
                                 width="60"
                                 height="50"
@@ -179,17 +180,18 @@
                                 <a class="navbar-brand" href="/">
                                     <!-- /home/eit/DjangoProjects/vertican_project/vertican/static/logo.png -->
                                     <img
-                                        src="{% static 'site_logo' %}/{{settings.site_logo}}"
+                                        src="{{ settings.site_logo }}"
+                                    {% comment %} src="{% static 'site_logo' %}/{{settings.site_logo}}" {% endcomment %}
                                         alt=""
                                         width="60"
                                         height="50"
                                     >
-                                    <span>
+                                    <span>              
                                         {{settings.site_title}}
                                     </span>
                                 </a>
                                 <p class="col">
-                                    {{settings.about}}
+                                    {{settings.about|safe}}
                                 </p>
                                 <ul>
                                     {% for x in settings.address %}

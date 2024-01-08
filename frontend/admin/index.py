@@ -13,7 +13,3 @@ class SliderAdmin(admin.ModelAdmin):
     list_display =  SLIDER_LIST_DISPLAY
 
 
-
-@admin.register(MenusModel)
-class MenuModelAdmin(admin.ModelAdmin):
-    list_display =  MenusModel_list
