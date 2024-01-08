@@ -78,7 +78,8 @@ def getMenus():
             try:
                 menuChildCheck = MenuChildModel.objects.filter(title=prop.property_title)
                 if menuChildCheck.exists():
-                    print('Already Exists')
+                    # print('Already Exists')
+                    pass
                 else:
                     menuChild = MenuChildModel.objects.create(
                         menu_id=estate[0].id,
@@ -112,7 +113,18 @@ def getTelevision():
     televisions = [{"title":tv.title, "youtube":tv.youtube, "description":tv.description} for tv in Television.objects.all()]
     return televisions
 
-
+def getPageTitle(request):
+    if request.path == "/":
+        title = 'Home - '
+    else:
+        # title = str(request.path).replace('/', '').title()
+        title = str(request.path).split('/')[1].title() + ' - '
+        path = str(request.path).split('/')[1]
+        if path == 'property_detail':
+            title = "Property Detail - "
+        else:
+            title = path.title() + ' - '
+    return title
 
 
 
@@ -148,4 +160,5 @@ def frontendContent(request):
         # 'contacts':BranchModel.objects.all().filter(is_active=True),
     }
     context['television'] = getTelevision()
+    context['page_title'] = getPageTitle(request)
     return context
