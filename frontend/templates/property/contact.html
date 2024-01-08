@@ -11,8 +11,9 @@
                         {% for contact in settings.branches  %}
                         <div class="col-sm-4 bg-secondary">
                             <div class="card" style="width: 18rem;">
-                                <img src="{{contact.image}}" class="card-img-top" style="height: 350px; width:350px; border-radius: 10px;">
-                                <div class="card-body text-justify">
+                                <div src="{{contact.image}}" class="card-img-top" style="height: 220px; width:350px; border-radius: 7px; background-image:url({{contact.image}}); background-position:top; background-size:cover;"></div>
+                                {% comment %} <img src="{{contact.image}}" class="card-img-top" style="height: 350px; width:350px; border-radius: 10px;"> {% endcomment %}
+                                <div class="card-body text-justify" style="width:350px;">
                                     <h5 class="card-title">
                                         <b>{{contact.name}}</b>
                                     </h5>
@@ -34,7 +35,7 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-sm-12" style="margin-top: 40px;">
+                <div class="col-sm-12" style="margin-top: 150px;">
                     <h2 class="mgt">CONTACT US</h2>
                     <!-- <h5><a href="#">Home</a>  /  Contact Us</h5> -->
                 </div>

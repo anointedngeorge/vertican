@@ -31,3 +31,4 @@ class Media(models.Model):
     class Meta:
         verbose_name = 'Media'
         verbose_name_plural = 'Media'
+        
