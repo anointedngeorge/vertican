@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
-from vertican.tools.baton import *
-from vertican.jazzime import *
+# from vertican.tools.baton import *
+# from vertican.jazzime import *
 # from vertican.settings.core_apps import INSTALLED_CORE_APPS
 from decouple import config
 
