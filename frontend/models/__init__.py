@@ -1,5 +1,6 @@
 from frontend.models.about import *
 from frontend.models.index import *
+from frontend.models.front_agent import *
 from frontend.models.branch import *
 from frontend.models.youtube import *
 from frontend.models.television import *

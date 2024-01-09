@@ -414,29 +414,32 @@
                     </h4>
                 </div>
             </div>
+
+
             <div class="team_h_1 clearfix">
+                {% for agent in front_agent %}
                 <div class="col-sm-3">
                     <div class="team_h_1i clearfix">
                         <div class="profile clearfix">
                             <div class="img-box">
-                                <img src="{% static 'property/assets' %}/img/15.jpg" class="img-responsive">
+                                <img src="{{ agent.image.url }}" class="img-responsive">
                                 <ul class="text-center">
-                                    <a href="#">
+                                    <a target="_blank" href="{{ agent.facebook_url }}">
                                         <li>
                                             <i class="fa fa-facebook"></i>
                                         </li>
                                     </a>
-                                    <a href="#">
+                                    <a target="_blank" href="{{ agent.twitter_url }}">
                                         <li>
                                             <i class="fa fa-twitter"></i>
                                         </li>
                                     </a>
-                                    <a href="#">
+                                    <a target="_blank" href="{{ agent.linkedin_url }}">
                                         <li>
                                             <i class="fa fa-linkedin"></i>
                                         </li>
                                     </a>
-                                    <a href="#">
+                                    <a target="_blank" href="{{ agent.instagram_url }}">
                                         <li>
                                             <i class="fa fa-instagram"></i>
                                         </li>
@@ -444,9 +447,9 @@
                                 </ul>
                             </div>
                             <div class="profilei text-center clearfix">
-                                <h3 class="mgt">Arcu Eget</h3>
-                                <h5>Real Estate Agent</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <h3 class="mgt">{{ agent.first_name }} {{ agent.last_name }}</h3>
+                                <h5 class="fw-bolder">{{ agent.role }}</h5>
+                                <p>{{ agent.description }}</p>
                                 <h5>
                                     <a class="button" href="#">View Profile</a>
                                 </h5>
@@ -454,124 +457,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="team_h_1i clearfix">
-                        <div class="profile clearfix">
-                            <div class="img-box">
-                                <img src="{% static 'property/assets' %}/img/16.jpg" class="img-responsive">
-                                <ul class="text-center">
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-facebook"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-twitter"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-linkedin"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-instagram"></i>
-                                        </li>
-                                    </a>
-                                </ul>
-                            </div>
-                            <div class="profilei text-center clearfix">
-                                <h3 class="mgt">Mauris Massa</h3>
-                                <h5>Real Estate Agent</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <h5>
-                                    <a class="button" href="#">View Profile</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="team_h_1i clearfix">
-                        <div class="profile clearfix">
-                            <div class="img-box">
-                                <img src="{% static 'property/assets' %}/img/17.jpg" class="img-responsive">
-                                <ul class="text-center">
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-facebook"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-twitter"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-linkedin"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-instagram"></i>
-                                        </li>
-                                    </a>
-                                </ul>
-                            </div>
-                            <div class="profilei text-center clearfix">
-                                <h3 class="mgt">Ante Dapibus</h3>
-                                <h5>Real Estate Agent</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <h5>
-                                    <a class="button" href="#">View Profile</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="team_h_1i clearfix">
-                        <div class="profile clearfix">
-                            <div class="img-box">
-                                <img src="{% static 'property/assets' %}/img/18.jpg" class="img-responsive">
-                                <ul class="text-center">
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-facebook"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-twitter"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-linkedin"></i>
-                                        </li>
-                                    </a>
-                                    <a href="#">
-                                        <li>
-                                            <i class="fa fa-instagram"></i>
-                                        </li>
-                                    </a>
-                                </ul>
-                            </div>
-                            <div class="profilei text-center clearfix">
-                                <h3 class="mgt">Nec Odio</h3>
-                                <h5>Real Estate Agent</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <h5>
-                                    <a class="button" href="#">View Profile</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+
         </div>
     </div>
 </section>
