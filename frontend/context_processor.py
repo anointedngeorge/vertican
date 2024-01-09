@@ -127,6 +127,9 @@ def getPageTitle(request):
     return title
 
 
+def getFrontEndAgents():
+    agents = FrontEndAgent.objects.all().order_by('?')
+    return agents
 
 
 
@@ -161,4 +164,5 @@ def frontendContent(request):
     }
     context['television'] = getTelevision()
     context['page_title'] = getPageTitle(request)
+    context['front_agent'] = getFrontEndAgents()
     return context
