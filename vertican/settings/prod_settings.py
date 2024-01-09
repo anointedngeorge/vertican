@@ -5,8 +5,10 @@ from vertican.jazzime import *
 from vertican.settings.core_apps import INSTALLED_CORE_APPS
 from decouple import config
 
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 DEBUG = True
 
@@ -77,10 +79,10 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': config("DBNAME"),
-        'USER': config("USERNAME"),
-        'PASSWORD': config("PASSWORD"),
-        'HOST': config("HOST"),
+        'NAME': os.environ["DBNAME"],
+        'USER': os.environ["USERNAME"],
+        'PASSWORD': os.environ["PASSWORD"],
+        'HOST': os.environ["HOST"],
         'PORT': '3306',
     }
 }
