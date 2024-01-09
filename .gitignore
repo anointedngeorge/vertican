@@ -1,13 +1,14 @@
 /env1
+/.venv
 /vertican/settings/dev_settings.py
 
 */__pycache__
 **/__pycache__
 ***/__pycache__
-
-db.sqilite3
-*/db.sqilite3
-*/migrations
+db.sqlite3
+db.sqlite31
+*/db.sqlite3
+# */migrations
 .venv/
 */.venv
 */.venv/
