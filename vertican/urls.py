@@ -18,8 +18,8 @@ urlpatterns = [
 ]
 
 
-from clientdashboard.admin import client_dashboard_site
-# clients
-urlpatterns += [
-    path('client/', client_dashboard_site.urls, name='client'),
-]
+# from clientdashboard.admin import client_dashboard_site
+# # clients
+# urlpatterns += [
+#     path('client/', client_dashboard_site.urls, name='client'),
+# ]
