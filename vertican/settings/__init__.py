@@ -1,7 +1,7 @@
 import os
 from decouple import config
 
-if config('ENVIRONMENT') == 'production':
+if os.environ['ENVIRONMENT'] == 'production':
     from vertican.settings.prod_settings import *
-elif config('ENVIRONMENT') == 'development':
+elif os.environ['ENVIRONMENT'] == 'development':
     from vertican.settings.dev_settings import *
