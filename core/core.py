@@ -6,6 +6,8 @@ from imagekit.processors import ResizeToFill
 import os
 import uuid
 from authuser.models import User
+
+
 class CoreBaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created=  models.DateField(auto_created=True, default=timezone.now, editable=False)
