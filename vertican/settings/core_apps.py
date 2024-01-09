@@ -1,6 +1,6 @@
 INSTALLED_CORE_APPS = [
     'adminmanager',
-    # 'clientdashboard',
+    'clientdashboard',
     'systemsettings',
     'djmoney',
     'django_extensions',
