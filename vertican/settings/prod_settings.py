@@ -1,14 +1,14 @@
 import os
 from pathlib import Path
-# from vertican.tools.baton import *
-# from vertican.jazzime import *
-# from vertican.settings.core_apps import INSTALLED_CORE_APPS
+from vertican.tools.baton import *
+from vertican.jazzime import *
+from vertican.settings.core_apps import INSTALLED_CORE_APPS
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 AUTH_USER_MODEL = 'authuser.User'
 
@@ -16,7 +16,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
-    # 'jazzmin',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,17 +30,9 @@ INSTALLED_APPS = [
     'consultants',
     'matrixpro',
     'frontend',
-
-    'adminmanager',
-    'clientdashboard',
-    'systemsettings',
-    'djmoney',
-    'django_extensions',
-    'imagekit',
-    'ckeditor'
 ]
 
-# INSTALLED_APPS += INSTALLED_CORE_APPS
+INSTALLED_APPS += INSTALLED_CORE_APPS
 
 
 MIDDLEWARE = [
