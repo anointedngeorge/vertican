@@ -10,8 +10,6 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-AUTH_USER_MODEL = 'authuser.User'
-
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -29,11 +27,13 @@ INSTALLED_APPS = [
     'clients',
     'consultants',
     'matrixpro',
-    'frontend',
+    'frontend'
 ]
 
 INSTALLED_APPS += INSTALLED_CORE_APPS
 
+
+AUTH_USER_MODEL = 'authuser.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
