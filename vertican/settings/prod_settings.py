@@ -8,7 +8,7 @@ from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': os.environ.get("DBNAME"),
-        'USER': os.environ.get("USERNAME"),
-        'PASSWORD': os.environ.get("PASSWORD"),
-        'HOST': os.environ.get("HOST"),
+        'NAME': config("DBNAME"),
+        'USER': config("USERNAME"),
+        'PASSWORD': config("PASSWORD"),
+        'HOST': config("HOST"),
         'PORT': '3306',
     }
 }
