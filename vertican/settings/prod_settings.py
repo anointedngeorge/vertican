@@ -3,16 +3,16 @@ from pathlib import Path
 from vertican.tools.baton import *
 from vertican.jazzime import *
 from vertican.settings.core_apps import INSTALLED_CORE_APPS
-
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = False
+SECRET_KEY = config("SECRET_KEY")
 
+DEBUG = False
 
 AUTH_USER_MODEL = 'authuser.User'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['vaticanprojects.com', 'www.vaticanprojects.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config("DBNAME"),
+        'USER': config("USERNAME"),
+        'PASSWORD': config("PASSWORD"),
+        'HOST': config("HOST"),   # Set to your MySQL server's host
+        'PORT': '3306',        # Set to your MySQL server's port
     }
 }
 
