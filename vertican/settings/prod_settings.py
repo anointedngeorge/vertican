@@ -16,10 +16,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
-    # 'bidxx',
-    'jazzmin',
+    # 'jazzmin',
     'django.contrib.admin',
-    # 'baton.autodiscover',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
