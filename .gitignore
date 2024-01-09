@@ -13,5 +13,8 @@ db.sqlite31
 */.venv
 */.venv/
 .env
+.enve
 env.txt
 *.env
+
+app.txt
