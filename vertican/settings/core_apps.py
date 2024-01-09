@@ -4,6 +4,6 @@ INSTALLED_CORE_APPS = [
     'systemsettings',
     'djmoney',
     'django_extensions',
-    'imagekit',
-    'ckeditor'
+    # 'imagekit',
+    'ckeditor',
 ]
