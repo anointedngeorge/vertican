@@ -12,7 +12,7 @@ DEBUG = False
 
 AUTH_USER_MODEL = 'authuser.User'
 
-ALLOWED_HOSTS = ['vaticanprojects.com', 'www.vaticanprojects.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -77,12 +77,12 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': config("DBNAME"),
         'USER': config("USERNAME"),
         'PASSWORD': config("PASSWORD"),
-        'HOST': config("HOST"),   # Set to your MySQL server's host
-        'PORT': '3306',        # Set to your MySQL server's port
+        'HOST': config("HOST"),
+        'PORT': '3306',
     }
 }
 
