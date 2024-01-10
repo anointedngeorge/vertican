@@ -3,9 +3,9 @@ from matrixpro.models.m_prop_sale_info import PropSaleInfo
 from django.urls import path
 from django.utils import timezone
 from django.http import HttpResponse
-from plugins.file_reader import (
-    csvWriterMultipleRow,reader
-)
+# from plugins.file_reader import (
+#     csvWriterMultipleRow,reader
+# )
 import os
 
 

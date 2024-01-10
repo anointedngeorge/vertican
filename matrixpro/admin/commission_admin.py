@@ -5,9 +5,9 @@ from matrixpro.models.m_commision import (ProSaleCommision, ADMIN_LIST_DISPLAY)
 from django.urls import path
 from django.utils import timezone
 from django.http import HttpResponse
-from plugins.file_reader import (
-    csvWriterMultipleRow,reader
-)
+# from plugins.file_reader import (
+#     csvWriterMultipleRow,reader
+# )
 import os
 
 @admin.register(ProSaleCommision)
@@ -39,25 +39,25 @@ class CommissionAdmin(admin.ModelAdmin):
 
 
 
-    def import_file(self, request):
-        try:
-            if request.method == 'POST':
-                data_file_name =  os.path.realpath('templates/data.csv')
-                if os.path.exists(data_file_name):
-                    importedfile = request.FILES['file'].read().decode('utf-8')
-                    d = csvWriterMultipleRow(file_path=data_file_name, data_file=importedfile)
-                    # reader the file
-                    r_file_data = reader(filepath=data_file_name)
-                    for file_data in r_file_data:
-                        Variable, Created = self.model.objects.get_or_create(**file_data)
-                        # print(Created)
-                    return HttpResponse(f"{Variable} - {Created}")
-                else:
-                    return HttpResponse('File does not exist')
+    # def import_file(self, request):
+    #     try:
+    #         if request.method == 'POST':
+    #             data_file_name =  os.path.realpath('templates/data.csv')
+    #             if os.path.exists(data_file_name):
+    #                 importedfile = request.FILES['file'].read().decode('utf-8')
+    #                 d = csvWriterMultipleRow(file_path=data_file_name, data_file=importedfile)
+    #                 # reader the file
+    #                 r_file_data = reader(filepath=data_file_name)
+    #                 for file_data in r_file_data:
+    #                     Variable, Created = self.model.objects.get_or_create(**file_data)
+    #                     # print(Created)
+    #                 return HttpResponse(f"{Variable} - {Created}")
+    #             else:
+    #                 return HttpResponse('File does not exist')
 
-        except Exception as e:
-            print(e)
-            return HttpResponse(f"{e}")
+    #     except Exception as e:
+    #         print(e)
+    #         return HttpResponse(f"{e}")
 
     def pay_commission(self, request, member_id=None):
         return HttpResponse('Thank u')
