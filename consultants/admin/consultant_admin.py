@@ -14,9 +14,9 @@ import os
 import pandas as pd
 from tablib import Dataset
 from plugins import generator
-# from plugins.file_reader import (
-#     csvWriterMultipleRow,reader
-# )
+from plugins.file_reader import (
+    csvWriterMultipleRow,reader
+)
 from actions.exportToDifferentFormat import *
 from actions.createAccount import *
 
@@ -51,8 +51,8 @@ class ConsultantAdmin(admin.ModelAdmin):
     def get_urls(self):
         url = super().get_urls()
         new_url = [
-            #  path('export-file/', self.export, name='export-file'),
-            #  path('import-file/', self.import_file, name='import-file'),
+             path('export-file/', self.export, name='export-file'),
+             path('import-file/', self.import_file, name='import-file'),
         ]
         urls =  new_url + url
         return urls
