@@ -26,10 +26,10 @@ INSTALLED_APPS = [
     # 
     'authuser',
     # 'import_export',
-    # 'clients',
-    # 'consultants',
-    # 'matrixpro',
-    # 'frontend',
+    'clients',
+    'consultants',
+    'matrixpro',
+    'frontend',
 ]
 
 # INSTALLED_APPS += INSTALLED_CORE_APPS
