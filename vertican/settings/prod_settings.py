@@ -2,9 +2,8 @@ import os
 from pathlib import Path
 from vertican.tools.baton import *
 from vertican.jazzime import *
-from vertican.settings.core_apps import INSTALLED_CORE_APPS
+from vertican.core_apps import INSTALLED_CORE_APPS
 from decouple import config
-
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,16 +23,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
+    # 
     'authuser',
-    'import_export',
-    'clients',
-    'consultants',
-    'matrixpro',
-    'frontend',
+    # 'import_export',
+    # 'clients',
+    # 'consultants',
+    # 'matrixpro',
+    # 'frontend',
 ]
 
-INSTALLED_APPS += INSTALLED_CORE_APPS
+# INSTALLED_APPS += INSTALLED_CORE_APPS
 
 
 AUTH_USER_MODEL = 'authuser.User'
