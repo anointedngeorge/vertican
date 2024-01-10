@@ -76,12 +76,15 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': config("DBNAME"),
         'USER': config("USERNAME"),
         'PASSWORD': config("PASSWORD"),
-        'HOST': config("HOST"),
+        'HOST':"localhost",
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
