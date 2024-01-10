@@ -23,8 +23,6 @@ from actions.createAccount import *
 
 
 
-
-
 @admin.register(Consultant)
 class ConsultantAdmin(admin.ModelAdmin):
     list_display = ADMIN_LIST_DISPLAY

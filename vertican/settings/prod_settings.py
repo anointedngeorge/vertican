@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from vertican.tools.baton import *
 from vertican.jazzime import *
 from vertican.core_apps import INSTALLED_CORE_APPS
 from decouple import config
@@ -25,14 +24,14 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 
     'authuser',
-    # 'import_export',
+    'import_export',
     'clients',
     'consultants',
     'matrixpro',
     'frontend',
 ]
 
-# INSTALLED_APPS += INSTALLED_CORE_APPS
+INSTALLED_APPS += INSTALLED_CORE_APPS
 
 
 AUTH_USER_MODEL = 'authuser.User'
