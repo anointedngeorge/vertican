@@ -18,3 +18,4 @@ env.txt
 *.env
 
 app.txt
+server_db.conf
