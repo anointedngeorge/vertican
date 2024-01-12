@@ -1,5 +1,6 @@
-import pymysql
-from decouple import config
+# import pymysql
+# from decouple import config
 
-if config("ENVIRONMENT") == "production":
-    pymysql.install_as_MySQLdb()
+# if config("ENVIRONMENT") == "production":
+#     pymysql.install_as_MySQLdb()
+    

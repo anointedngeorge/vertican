@@ -76,15 +76,12 @@ WSGI_APPLICATION = 'vertican.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config("DBNAME"),
         'USER': config("USERNAME"),
         'PASSWORD': config("PASSWORD"),
         'HOST':"localhost",
-        'PORT': '3306',
-         'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'PORT': '5432', 
     }
 }
 
