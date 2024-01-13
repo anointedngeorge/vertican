@@ -10,11 +10,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-        'https://vaticanprojects.com',
-        'vaticanprojects.com',
-        'www.vaticanprojects.com'
-    ]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
