@@ -68,7 +68,12 @@ def getAddress():
 def getAbout(request):
     about = AboutModel.objects.all()
     if about.exists():
-        return {"about":about[0].about,  'site_logo':request.build_absolute_uri(about[0].site_logo.url), 'site_title':about[0].site_title, 'site_subtitle':about[0].site_subtitle}
+        d = str(about[0].site_logo.url).split("/")[1:]
+        fomatted = ""
+        for x in d:
+            fomatted += x + "/"
+        
+        return {"about":about[0].about,  'site_logo':fomatted, 'site_title':about[0].site_title, 'site_subtitle':about[0].site_subtitle}
     return {"about":"",  'site_logo':'', 'site_title':'', 'site_subtitle':''}
 
 def getMenus():

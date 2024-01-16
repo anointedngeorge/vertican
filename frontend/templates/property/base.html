@@ -84,10 +84,11 @@
                         </button>
                         <a class="navbar-brand" href="/">
                             <i></i>
+
+                           
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
-                                src="{{ settings.site_logo }}"
-                                {% comment %} src="{% static 'site_logo' %}/{{settings.site_logo}}" {% endcomment %}
+                                src="{{request.META.HTTP_REFERER}}{{settings.site_logo}}"
                                 alt=""
                                 width="60"
                                 height="50"
@@ -181,8 +182,7 @@
                                 <a class="navbar-brand" href="/">
                                     <!-- /home/eit/DjangoProjects/vertican_project/vertican/static/logo.png -->
                                     <img
-                                        src="{{ settings.site_logo }}"
-                                    {% comment %} src="{% static 'site_logo' %}/{{settings.site_logo}}" {% endcomment %}
+                                        src="{{request.META.HTTP_REFERER}}{{settings.site_logo}}"
                                         alt=""
                                         width="60"
                                         height="50"
