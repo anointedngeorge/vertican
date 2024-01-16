@@ -16,6 +16,10 @@ db.sqlite31
 .enve
 env.txt
 *.env
+*migrations/
+**migrations/
+*/migrations/
+**/migrations/
 
 app.txt
 server_db.conf
