@@ -4,7 +4,8 @@ from django.db import models
 class Downloads(models.Model):
     name = models.CharField(max_length=150)
     # logo = models.CharField(max_length=150, null=True, blank=True)
-    logo = models.ImageField(upload_to='contact', null=True, blank=True)
+    logo = models.ForeignKey("frontend.FrontendImage", on_delete=models.PROTECT, null=True)
+    # logo = models.ImageField(upload_to='contact', null=True, blank=True)
     
     def __str__(self):
         return self.name

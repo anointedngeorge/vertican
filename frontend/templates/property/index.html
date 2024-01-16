@@ -9,6 +9,12 @@
 .carousel-caption{
 	background-color: rgba(0, 0, 0, 0.247);
 }
+.carousel-caption h3{
+	font-size: 40px;
+}
+.carousel-caption p{
+	font-size: 20px;
+}
 
 #custom-carousel-image{
 	width:100%; 
@@ -19,12 +25,24 @@
 		width:100%; 
 		height: 40vh !important;
 	}
+	.carousel-caption h3{
+		font-size: 13px;
+	}
+	.carousel-caption p{
+		font-size: 8px;
+	}
 }
 
 @media screen and (min-width: 501px) and (max-width: 600px){
 	#custom-carousel-image{
 		width:100%; 
 		height: 50vh !important;
+	}
+	.carousel-caption h3{
+		font-size: 20px;
+	}
+	.carousel-caption p{
+		font-size: 12px;
 	}
 }
 
@@ -33,12 +51,24 @@
 		width:100%; 
 		height: 60vh !important;
 	}
+	.carousel-caption h3{
+		font-size: 25px;
+	}
+	.carousel-caption p{
+		font-size: 15px;
+	}
 }
 
 @media screen and (min-width: 701px) and (max-width: 950px){
 	#custom-carousel-image{
 		width:100%; 
 		height: 70vh !important;
+	}
+	.carousel-caption h3{
+		font-size: 30px;
+	}
+	.carousel-caption p{
+		font-size: 18px;
 	}
 }
 </style>
@@ -59,7 +89,7 @@
                     <div class="item {% if slide.is_active %} active {% endif %}">
                         <!-- <img style="width:100%; height:200px !important;" src="media/{{slide.image}}" alt="Chania"> -->
 						<div id="custom-carousel-image" style="
-							background: url(media/{{slide.image}}); 
+							background: url(media/{{slide.image.image}}); 
 							background-position:top; 
 							background-size:cover;">
 						</div>

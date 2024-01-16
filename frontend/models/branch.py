@@ -5,7 +5,8 @@ from frontend.singleton.setting_singleton import *
 
 class BranchModel(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True)
-    image = models.ImageField(upload_to='contact')
+    image = models.ForeignKey("frontend.FrontendImage", on_delete=models.PROTECT, null=True)
+    # image = models.ImageField(upload_to='contact')
     address = models.CharField(max_length=250, null=True, blank=True)
     tel = models.CharField(max_length=250, null=True, blank=True)
     email = models.EmailField(max_length=254, blank=True, null=True)

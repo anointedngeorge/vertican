@@ -10,7 +10,9 @@ class Slider(models.Model):
     title = models.CharField(max_length=250, null=True)
     subtitle = models.CharField(max_length=250, null=True)
     alt = models.CharField(max_length=250, default='1.jpg')
-    image = models.ImageField(upload_to="slider")
+    # image = models.ImageField(upload_to="slider")
+    image = models.ForeignKey("frontend.FrontendImage", on_delete=models.PROTECT, null=True)
+    
     is_media_file_online = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False, 
                                     choices=SliderActiveChoice.choices, help_text='Set one to true')

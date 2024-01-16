@@ -15,7 +15,7 @@ def getDownloads():
                     'title':cont.title,
                     'link':cont.link
                 })
-            container.append({'title':x.name, 'logo':x.logo, "files": cnt })
+            container.append({'title':x.name, 'logo':x.logo.image.url, "files": cnt })
     return container
 
 
@@ -46,7 +46,7 @@ def getBranches():
         {
         'id': branch.id, 
         'name': branch.name, 
-        'image': branch.image.url, 
+        'image': branch.image.image.url, 
         'address': branch.address, 
         'tel': branch.tel,
         'email': branch.email,
@@ -68,7 +68,7 @@ def getAddress():
 def getAbout(request):
     about = AboutModel.objects.all()
     if about.exists():
-        d = str(about[0].site_logo.url).split("/")[1:]
+        d = str(about[0].site_logo.image.url).split("/")[1:]
         fomatted = ""
         for x in d:
             fomatted += x + "/"
