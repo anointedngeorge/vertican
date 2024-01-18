@@ -8,7 +8,10 @@ MenusModel_list = ['title','link','has_children']
 class MenusModel(CoreBaseModel):
     title = models.CharField(max_length=250, null=True, blank=True)
     link = models.CharField(max_length=250, null=True, blank=True)
+    index = models.IntegerField(default=0)
     has_children = models.BooleanField(default=True)
+
+    
 
     class Meta:
         verbose_name = 'Menu'
@@ -22,6 +25,7 @@ class MenuChildModel(CoreBaseModel):
     menu = models.ForeignKey('frontend.MenusModel', on_delete=models.CASCADE, related_name="menu")
     title = models.CharField(max_length=250, null=True, blank=True)
     link = models.CharField(max_length=250, null=True, blank=True)
+    index = models.IntegerField(default=0)
     
     class Meta:
         verbose_name = 'Menu Child'

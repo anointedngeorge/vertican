@@ -60,7 +60,7 @@ def getAddress():
             "title":address.title, 
             "link":address.link, 
             "position":address.position
-        } for address in  Address.objects.all()
+        } for address in  Address.objects.all().order_by('index')
     ]
     return container
 
@@ -77,7 +77,7 @@ def getAbout(request):
     return {"about":"",  'site_logo':'', 'site_title':'', 'site_subtitle':''}
 
 def getMenus():
-    estate = MenusModel.objects.filter(title="Our Estates")
+    estate = MenusModel.objects.filter(title="Our Estates").order_by("index")
     if estate.exists():
         for prop in MatrixProperty.objects.all():
             try:
@@ -93,7 +93,8 @@ def getMenus():
                     )
                     print(menuChild)
             except Exception as e:
-                print(e)
+                # print(e)
+                return f"{e}"
     
                 
                 
