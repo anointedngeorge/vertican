@@ -17,13 +17,15 @@ class SettingSingletonModel(models.Model):
 
     class Meta:
         abstract = True
-
+        
+    
 class SettingSingletonModelManager(models.Manager):
     def get_queryset(self):
-        queryset = super().get_queryset()
-        if queryset.exists():
-            return queryset
-        return []
+        try:
+            queryset = super().get_queryset()
+            return queryset if queryset.exists() else self.none()
+        except models.ObjectDoesNotExist:
+            return self.none()
 
 
 class SettingSingletonModelMixin(models.Model):
@@ -33,5 +35,9 @@ class SettingSingletonModelMixin(models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        self.pk = 1  # Set a fixed primary key value to ensure only one record exists
-        super().save(*args, **kwargs)
+        try:
+            if not self.pk:
+                self.pk = 1  # Set a fixed primary key value to ensure only one record exists
+            super().save(*args, **kwargs)
+        except models.ObjectDoesNotExist as e:
+            print(f"Error saving SettingSingletonModelMixin: {e}")
