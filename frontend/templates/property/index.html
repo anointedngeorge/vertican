@@ -42,7 +42,6 @@
 	}
 }
 </style>
-
 <section id="center" class="center_home clearfix">
     <div class="center_main clearfix">
         <div class="w3-content w3-section clearfix">
@@ -56,13 +55,12 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     {% for slide in sliders  %}
-                    <div class="item {% if slide.is_active %} active {% endif %}">
+                    <div class="item {% if slide.index == 1 %} active {% endif %}">
                         <!-- <img style="width:100%; height:200px !important;" src="media/{{slide.image}}" alt="Chania"> -->
-						<div id="custom-carousel-image" style="
+                        <div id="custom-carousel-image" style="
 							background: url(media/{{slide.image}}); 
 							background-position:top; 
-							background-size:cover;">
-						</div>
+							background-size:cover;"></div>
                         <div class="carousel-caption">
                             <h3 style="color:#fff;">{{slide.title}}</h3>
                             <p>{{slide.subtitle}}</p>
@@ -464,8 +462,6 @@
                     </h4>
                 </div>
             </div>
-
-
             <div class="team_h_1 clearfix">
                 {% for agent in front_agent %}
                 <div class="col-sm-3">
@@ -509,7 +505,6 @@
                 </div>
                 {% endfor %}
             </div>
-
         </div>
     </div>
 </section>
@@ -587,7 +582,6 @@
 {% if testimonials|length > 1 %}
 {% include "property/testimonal.html" %}
 {% endif %}
-
 <section id="about_home">
     <div class="container">
         <div class="row">

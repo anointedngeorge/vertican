@@ -15,7 +15,6 @@
         <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
         <script src="{% static 'property/assets/js/jquery-2.1.1.min.js' %}"></script>
         <script src="{% static 'property/assets/js/bootstrap.min.js' %}"></script>
-
     </head>
     <body>
         <section id="top">
@@ -84,8 +83,6 @@
                         </button>
                         <a class="navbar-brand" href="/">
                             <i></i>
-
-                           
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
                                 src="{{request.META.HTTP_REFERER}}{{settings.site_logo}}"
@@ -187,14 +184,13 @@
                                         width="60"
                                         height="50"
                                     >
-                                    <span>              
+                                    <span>
                                         {{settings.site_title}}
                                     </span>
                                 </a>
                                 <section class="col" id="foot-about" style="color:#cacaca !important;">
                                     {{settings.about|safe}}
                                 </section>
-
                                 <ul>
                                     {% for x in settings.address %}
                 {% if x.position == 'left' %}
