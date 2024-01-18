@@ -142,11 +142,11 @@ def getFrontEndAgents():
 
 
 def frontendContent(request):
-    print(getAbout(request)["site_logo"])
+
     data = list(MatrixProperty.objects.all())
     context = {}
     context['youtube'] = YoutubeModel.objects.all().filter(is_active=True)
-    context['sliders'] = Slider.objects.all().filter(is_showed=True)
+    context['sliders'] = Slider.objects.all().filter(is_showed=True).order_by("index")
     context['properties'] = getProperties()
     # context['properties'] = groupingItem(item=data)
     context['testimonials'] = groupingItem(item=list(MatriproTestimonal.objects.all().filter(control=True).order_by('created')))
