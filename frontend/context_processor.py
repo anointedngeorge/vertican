@@ -91,7 +91,7 @@ def getMenus():
                         title=prop.property_title,
                         link = f'/property_detail/{prop.id}/'
                     )
-                    print(menuChild)
+                    # print(menuChild)
             except Exception as e:
                 # print(e)
                 return f"{e}"
@@ -99,7 +99,7 @@ def getMenus():
                 
                 
     container  = []
-    menus = MenusModel.objects.all()
+    menus = MenusModel.objects.all().order_by("index")
     
     for menu in menus:
         menu_children = MenuChildModel.objects.all().filter(menu_id=menu.id)
@@ -115,6 +115,7 @@ def getMenus():
         container.append(menu_dict)
     return container
 
+# 
 def getTelevision():
     televisions = [{"title":tv.title, "youtube":tv.youtube, "description":tv.description} for tv in Television.objects.all()]
     return televisions
@@ -141,11 +142,11 @@ def getFrontEndAgents():
 
 
 def frontendContent(request):
-    print(getAbout(request)["site_logo"])
+
     data = list(MatrixProperty.objects.all())
     context = {}
     context['youtube'] = YoutubeModel.objects.all().filter(is_active=True)
-    context['sliders'] = Slider.objects.all().filter(is_showed=True)
+    context['sliders'] = Slider.objects.all().filter(is_showed=True).order_by("index")
     context['properties'] = getProperties()
     # context['properties'] = groupingItem(item=data)
     context['testimonials'] = groupingItem(item=list(MatriproTestimonal.objects.all().filter(control=True).order_by('created')))

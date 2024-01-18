@@ -12,6 +12,7 @@ class Slider(models.Model):
     alt = models.CharField(max_length=250, default='1.jpg')
     image = models.ImageField(upload_to="slider")
     is_media_file_online = models.BooleanField(default=False)
+    index = models.IntegerField( default=0 )
     is_active = models.BooleanField(default=False, 
                                     choices=SliderActiveChoice.choices, help_text='Set one to true')
     is_showed = models.BooleanField(default=True, 
