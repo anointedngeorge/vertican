@@ -91,7 +91,7 @@ def getMenus():
                         title=prop.property_title,
                         link = f'/property_detail/{prop.id}/'
                     )
-                    print(menuChild)
+                    # print(menuChild)
             except Exception as e:
                 # print(e)
                 return f"{e}"
@@ -99,7 +99,7 @@ def getMenus():
                 
                 
     container  = []
-    menus = MenusModel.objects.all()
+    menus = MenusModel.objects.all().order_by("index")
     
     for menu in menus:
         menu_children = MenuChildModel.objects.all().filter(menu_id=menu.id)
@@ -115,6 +115,7 @@ def getMenus():
         container.append(menu_dict)
     return container
 
+# 
 def getTelevision():
     televisions = [{"title":tv.title, "youtube":tv.youtube, "description":tv.description} for tv in Television.objects.all()]
     return televisions
