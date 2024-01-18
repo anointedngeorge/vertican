@@ -71,3 +71,6 @@ class ServicesModel(models.Model):
     def __str__(self) -> str:
         return f"{self.title}"
 
+
+# B9DjsuKjeO64F8C
+    # find . -path "*/migrations/*.py" -not -name "__init__.py" -delete && find . -path "*/migrations/*.pyc" -delete
