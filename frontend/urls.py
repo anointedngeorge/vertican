@@ -11,7 +11,7 @@ from frontend import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<str:pagename>', views.index, name='index'),
+    path('<str:pagename>/', views.index, name='index'),
     path('property_detail/<uuid:id>/', views.property_details, name='property_detail'),
 ]
 
