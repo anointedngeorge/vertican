@@ -12,7 +12,9 @@
                         <div class="col-sm-4 bg-secondary">
                             <div class="card" style="width: 18rem;">
                                 <div src="{{contact.image}}" class="card-img-top" style="height: 220px; width:350px; border-radius: 7px; background-image:url({{contact.image}}); background-position:top; background-size:cover;"></div>
-                                {% comment %} <img src="{{contact.image}}" class="card-img-top" style="height: 350px; width:350px; border-radius: 10px;"> {% endcomment %}
+                                {% comment %}
+                                <img src="{{contact.image}}" class="card-img-top" style="height: 350px; width:350px; border-radius: 10px;">
+                                {% endcomment %}
                                 <div class="card-body text-justify" style="width:350px;">
                                     <h5 class="card-title">
                                         <b>{{contact.name}}</b>
@@ -94,7 +96,7 @@
                             <br>
                             <br>
                             <p class="col">
-                                {{settings.about}}
+                                {{ settings.about|safe|slice:":300" }}
                             </p>
                             <ul>
                                 {% for x in settings.address %}
