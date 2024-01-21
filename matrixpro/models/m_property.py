@@ -47,7 +47,7 @@ class MatrixPropertyFeatures(CoreBaseModel):
 
 
 
-LIST_MatrixProperty = ['status','property_title','property_desc','property_location','property_address', 'property_type',
+LIST_MatrixProperty = ['status','property_title','property_location','property_address', 'property_type',
             'pro_actual_price','pro_actual_qty','pro_actual_price'       
             ]
 
