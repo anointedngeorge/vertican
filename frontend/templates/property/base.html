@@ -189,7 +189,7 @@
                                     </span>
                                 </a>
                                 <section class="col" id="foot-about" style="color:#cacaca !important;">
-                                    {{settings.about|safe}}
+                                    {{ settings.about|safe|slice:":300" }}
                                 </section>
                                 <ul>
                                     {% for x in settings.address %}
