@@ -88,12 +88,11 @@
                             <i></i>
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
-                                src="//{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
+                                src="{{wsgi_protocol}}://{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
                                 alt=""
                                 width="60"
                                 height="50"
                             >
-                            <span> {{settings.site_title }}</span>
                         </a>
                     </div>
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -183,7 +182,7 @@
                                     <!-- /home/eit/DjangoProjects/vertican_project/vertican/static/logo.png -->
                                     <!-- src="{{request.META.HTTP_REFERER}}{{settings.setings_package.site_logo.url}}" -->
                                     <img
-                                        src="//{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
+                                        src="{{wsgi_protocol}}://{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
                                         alt=""
                                         width="60"
                                         height="50"

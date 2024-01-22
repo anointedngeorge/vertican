@@ -147,9 +147,10 @@ def getFrontEndAgents():
 
 
 def frontendContent(request):
-
+    wsgi_protocol = request.META.get("wsgi.url_scheme")
     data = list(MatrixProperty.objects.all())
     context = {}
+    context['wsgi_protocol'] =wsgi_protocol
     context['youtube'] = YoutubeModel.objects.all().filter(is_active=True)
     context['sliders'] = Slider.objects.all().filter(is_showed=True).order_by("index")
     context['properties'] = getProperties()
