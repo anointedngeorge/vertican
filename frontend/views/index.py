@@ -21,6 +21,7 @@ def index(request, pagename=None, id=None):
             context['id'] = id
             return render(request, f'{FRONTEND_TEMPLATE}/index.html', context=context)
     except Exception as e:
+        print(e)
         return HttpResponse(str(e))
 
 
