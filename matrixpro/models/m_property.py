@@ -37,6 +37,7 @@ class MatrixPropertyType(CoreBaseModel):
 
 class MatrixPropertyFeatures(CoreBaseModel):
     name  = models.CharField(max_length=250)
+    image = models.ImageField(upload_to="imageFeatures", null=True, blank=True)
 
     class Meta:
         verbose_name = 'Property Feature'
@@ -44,6 +45,19 @@ class MatrixPropertyFeatures(CoreBaseModel):
 
     def __str__(self) -> str:
         return str(self.name)
+
+
+
+class MatrixPropertyVideos(CoreBaseModel):
+    data  = models.TextField()
+
+    class Meta:
+        verbose_name = 'Property Videos'
+        verbose_name_plural = 'Property Videos'
+
+    def __str__(self) -> str:
+        return str(self.data)
+    
 
 
 
@@ -84,7 +98,7 @@ class MatrixProperty(CoreBaseModelWithImage):
     is_frontend = models.CharField(null=True,choices=[('yes','Yes'), ('no','No')], max_length=100)
     posted_by = models.ForeignKey("consultants.Consultant", on_delete=models.CASCADE, blank=True, null=True)
     property_features = models.ManyToManyField("matrixpro.MatrixPropertyFeatures", blank=True)
-
+    property_features_vid = models.ManyToManyField("matrixpro.MatrixPropertyVideos", blank=True)
 
     class Meta:
         verbose_name = 'Property'

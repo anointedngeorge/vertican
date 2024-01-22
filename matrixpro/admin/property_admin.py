@@ -74,3 +74,8 @@ class MatrizPropertyAdmin(admin.ModelAdmin):
 class PropertyMediaAdmin(admin.ModelAdmin):
     pass
         
+
+
+@admin.register(MatrixPropertyVideos)
+class PropertyFeatureVidAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'data']
