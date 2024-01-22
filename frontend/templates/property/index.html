@@ -7,7 +7,11 @@
 {% block content %}
 <style>
 .carousel-caption{
-	background-color: rgba(0, 0, 0, 0.247);
+	background-color: rgba(0, 0, 0, 0.1);
+	margin: 0 auto;
+	max-width:300px;
+	min-height: 30px;
+	
 }
 
 #custom-carousel-image{
@@ -76,7 +80,6 @@ div.overlay {
                         <div class="carousel-caption">
                             <div class="overlay"></div>
                             <h3 style="color:#fff;">{{slide.title}}</h3>
-                            <p>{{slide.subtitle}}</p>
                         </div>
                     </div>
                     {% endfor %}
