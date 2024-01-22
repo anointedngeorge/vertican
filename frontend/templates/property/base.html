@@ -24,6 +24,9 @@
                         <div class="col-sm-6">
                             <div class="top_1l clearfix">
                                 <ul>
+                                    <li>
+                                        Email: {{settings.setings_package.email}}
+                                    </li>
                                     {% for x in settings.address %}
                     {% if x.position == 'left' %}
                                     <li>
@@ -85,7 +88,7 @@
                             <i></i>
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
-                                src="{{request.META.HTTP_REFERER}}{{settings.site_logo}}"
+                                src="//{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
                                 alt=""
                                 width="60"
                                 height="50"
@@ -178,8 +181,9 @@
                             <div class="footer_1i clearfix">
                                 <a class="navbar-brand" href="/">
                                     <!-- /home/eit/DjangoProjects/vertican_project/vertican/static/logo.png -->
+                                    <!-- src="{{request.META.HTTP_REFERER}}{{settings.setings_package.site_logo.url}}" -->
                                     <img
-                                        src="{{request.META.HTTP_REFERER}}{{settings.site_logo}}"
+                                        src="//{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
                                         alt=""
                                         width="60"
                                         height="50"
@@ -304,7 +308,7 @@
                     <div class="footer_2 clearfix">
                         <div class="col-sm-8">
                             <div class="footer_2l clearfix">
-                                <p class="col_3">© 2013 Vatican Guarden Estate. All Rights Reserved | Design by {{settings.site_title}}</p>
+                                <p class="col_3">{{settings.setings_package.footer_section}}</p>
                             </div>
                         </div>
                         <div class="col-sm-4">

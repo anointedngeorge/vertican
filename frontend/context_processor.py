@@ -2,6 +2,11 @@ from frontend.models import *
 from matrixpro.models import *
 import itertools
 
+
+
+
+setting_mod =  SettingModel.objects.all()
+
 def getDownloads():
     container  = []
     get_downs = Downloads.objects.all()
@@ -167,6 +172,7 @@ def frontendContent(request):
         'site_title':getAbout(request)["site_title"],
         'site_subtitle':getAbout(request)["site_subtitle"],
         'menus':getMenus(),
+        "setings_package":setting_mod.first()
         # 'contacts':BranchModel.objects.all().filter(is_active=True),
     }
     context['television'] = getTelevision()
