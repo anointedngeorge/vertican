@@ -144,13 +144,24 @@ def getFrontEndAgents():
     return agents
 
 
+def httpPattern(url):
+    import re
+    pattern = re.compile(r'(http[s]?://[^:/]+:\d+)')
+    match = pattern.search(url)
+
+    if match:
+        # Retrieve the captured part of the URL and add a trailing '/'
+        cleaned_url = match.group(1)
+        return cleaned_url
+    else:
+        return ""
 
 
 def frontendContent(request):
-    wsgi_protocol = request.META.get("wsgi.url_scheme")
+    url_path = httpPattern(request.META.get("HTTP_REFERER"))
     data = list(MatrixProperty.objects.all())
     context = {}
-    context['wsgi_protocol'] =wsgi_protocol
+    context['wsgi_protocol'] = url_path
     context['youtube'] = YoutubeModel.objects.all().filter(is_active=True)
     context['sliders'] = Slider.objects.all().filter(is_showed=True).order_by("index")
     context['properties'] = getProperties()

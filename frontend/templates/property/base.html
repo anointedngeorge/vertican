@@ -88,7 +88,7 @@
                             <i></i>
                             <!-- frontend/static/site_logo/logo.png -->
                             <img
-                                src="{{wsgi_protocol}}://{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
+                                src="{{wsgi_protocol}}{{settings.setings_package.site_logo.url}}"
                                 alt=""
                                 width="60"
                                 height="50"
@@ -182,7 +182,7 @@
                                     <!-- /home/eit/DjangoProjects/vertican_project/vertican/static/logo.png -->
                                     <!-- src="{{request.META.HTTP_REFERER}}{{settings.setings_package.site_logo.url}}" -->
                                     <img
-                                        src="{{wsgi_protocol}}://{{request.META.HTTP_HOST}}{{settings.setings_package.site_logo.url}}"
+                                        src="{{wsgi_protocol}}{{settings.setings_package.site_logo.url}}"
                                         alt=""
                                         width="60"
                                         height="50"
