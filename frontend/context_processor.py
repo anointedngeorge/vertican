@@ -146,15 +146,17 @@ def getFrontEndAgents():
 
 def httpPattern(url):
     import re
-    pattern = re.compile(r'(http[s]?://[^:/]+:\d+)')
-    match = pattern.search(url)
-
-    if match:
-        # Retrieve the captured part of the URL and add a trailing '/'
-        cleaned_url = match.group(1)
-        return cleaned_url
-    else:
-        return ""
+    try:
+        pattern = re.compile(r'(http[s]?://[^:/]+:\d+)')
+        match = pattern.search(url)
+        if match:
+            # Retrieve the captured part of the URL and add a trailing '/'
+            cleaned_url = match.group(1)
+            return cleaned_url
+        else:
+            return ""
+    except:
+        pass
 
 
 def frontendContent(request):
