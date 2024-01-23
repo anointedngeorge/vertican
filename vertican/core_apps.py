@@ -5,4 +5,5 @@ INSTALLED_CORE_APPS = [
     'django_extensions',
     'imagekit',
     'ckeditor',
+   
 ]

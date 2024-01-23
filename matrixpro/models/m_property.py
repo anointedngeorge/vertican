@@ -38,6 +38,8 @@ class MatrixPropertyType(CoreBaseModel):
 class MatrixPropertyFeatures(CoreBaseModel):
     name  = models.CharField(max_length=250)
     image = models.ImageField(upload_to="imageFeatures", null=True, blank=True)
+    index = models.IntegerField(default=0)
+    firstInSlide =  models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Property Feature'

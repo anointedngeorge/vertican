@@ -82,17 +82,14 @@ def getAbout(request):
     return {"about":"",  'site_logo':'', 'site_title':'', 'site_subtitle':''}
 
 def getMenus():
-    estate = MenusModel.objects.filter(title="Our Estates").order_by("index")
+    estate = MenusModel.objects.filter(link="/estates").order_by("index")
     if estate.exists():
         for prop in MatrixProperty.objects.all():
             try:
                 menuChildCheck = MenuChildModel.objects.filter(title=prop.property_title)
-                if menuChildCheck.exists():
-                    # print('Already Exists')
-                    pass
-                else:
+                if not menuChildCheck.exists():
                     menuChild = MenuChildModel.objects.create(
-                        menu_id=estate[0].id,
+                        menu_id=estate.first().id,
                         title=prop.property_title,
                         link = f'/property_detail/{prop.id}/'
                     )
@@ -100,9 +97,7 @@ def getMenus():
             except Exception as e:
                 # print(e)
                 return f"{e}"
-    
-                
-                
+            
     container  = []
     menus = MenusModel.objects.all().order_by("index")
     
@@ -119,6 +114,7 @@ def getMenus():
             menu_dict['children'] = children
         container.append(menu_dict)
     return container
+
 
 # 
 def getTelevision():

@@ -155,7 +155,7 @@
                             </h5>
                         </div> -->
                         <div class="center_detail_1ri1 clearfix">
-                            <h4 class="mgt"> Agent Information</h4>
+                            <!-- <h4 class="mgt"> Agent Information</h4>
                             <hr>
                             <div class="center_detail_1ri1i1 clearfix">
                                 <img src="img/30.jpg" class="img-circle" alt="abc">
@@ -173,7 +173,7 @@
                             <h6>
                                 <i class="fa fa-envelope col_1"></i>
                                 <a href="#">info@gmail.com</a>
-                            </h6>
+                            </h6> -->
                             <br>
                             <h4> Request Inquiry</h4>
                             <hr>
@@ -217,23 +217,29 @@
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         <!-- start iteration -->
-                                        {% if items %}
-                                       {% for item  in m_property.property_features.all %}
-                                        <div class="item {% if forloop.counter0 == 0 %}active{% endif %}">
+                                        {% groupingItem1 m_property.property_features.all  as items %}
+                                        
+                                        {% for item in items %}
+                                        <div class="item {% if item.active %} active {% endif %}">
                                             <div class="col-sm-12 space_all">
                                                 <div class="feature_2im clearfix">
                                                     <div class="feature_2im1 clearfix">
                                                         <a href="#">
-                                                            <img src="{{wsgi_protocol}}{{item.image.url}}/" class="iw" alt="abc">
+                                                            <img
+                                                                src="{{wsgi_protocol}}{{item.data.image.url}}/"
+                                                                class="iw"
+                                                                style="width: 100%;"
+                                                                height="200px"
+                                                                alt="abc"
+                                                            >
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {% endfor %}
-                                        
-                                        {% endif %}
+                                            <!-- {% endfor  -->
                                             <!-- end iteration on item -->
                                         </div>
+                                        {% endfor %}
                                     </div>
                                     <div class="feature_2_last text-center clearfix">
                                         <div class="col-sm-12">
