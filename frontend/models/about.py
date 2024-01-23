@@ -9,9 +9,9 @@ from ckeditor.fields import RichTextField
 
 class AboutModel(CoreBaseModel):
     about = RichTextField(null=True, blank=True)
-    site_logo = models.ImageField(upload_to='contact', null=True, blank=True)
-    site_title = models.CharField(max_length=250, null=True, blank=True)
-    site_subtitle = models.CharField(max_length=250, default="", blank=True)
+    # site_logo = models.ImageField(upload_to='/contact', null=True, blank=True)
+    # site_title = models.CharField(max_length=250, null=True, blank=True)
+    # site_subtitle = models.CharField(max_length=250, default="", blank=True)
 
 
 
