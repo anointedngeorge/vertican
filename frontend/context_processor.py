@@ -173,9 +173,9 @@ def frontendContent(request):
         'branches': getBranches(),
         'address':getAddress(),
         'about':getAbout(request)["about"],
-        # 'site_logo':getAbout(request)["site_logo"],
+        'site_logo':setting_mod.first().site_logo,
         # # 'site_logo':'logo.png',
-        # 'site_title':getAbout(request)["site_title"],
+        'site_title':setting_mod.first().site_title,
         # 'site_subtitle':getAbout(request)["site_subtitle"],
         'menus':getMenus(),
         "setings_package":setting_mod.first()
