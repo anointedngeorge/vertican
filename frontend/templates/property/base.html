@@ -108,13 +108,13 @@
                             {% for menu in settings.menus %}
                                 {% if not menu.has_children %}
                                     {% if request.META.PATH_INFO == menu.link %}
-                                <li>
-                                    <a class="m_tag active_tab" href="{{menu.link}}">{{menu.title}}</a>
-                                </li>
+                            <li>
+                                <a class="m_tag active_tab" href="{{menu.link}}">{{menu.title}}</a>
+                            </li>
                             {% else %}
-                                <li>
-                                    <a class="m_tag" href="{{menu.link}}">{{menu.title}}</a>
-                                </li>
+                            <li>
+                                <a class="m_tag" href="{{menu.link}}">{{menu.title}}</a>
+                            </li>
                             {% endif %}
                             {%  else %}
                             <!-- with dropdown menue -->
@@ -189,7 +189,7 @@
                                     <!-- src="{{request.META.HTTP_REFERER}}{{settings.setings_package.site_logo.url}}" -->
                                     <img src="{{wsgi_protocol}}{{settings.setings_package.site_logo.url}}" alt="" class="imageLogoSize">
                                 </a>
-                                <section class="col" id="foot-about" style="color:#cacaca !important;">
+                                <section class="col-lg-3" id="foot-about" style="color:#cacaca !important;">
                                     {{ settings.about|safe|slice:":300" }}
                                 </section>
                                 <ul>
