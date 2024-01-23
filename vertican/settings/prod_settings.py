@@ -3,12 +3,12 @@ from pathlib import Path
 from vertican.jazzime import *
 from vertican.core_apps import INSTALLED_CORE_APPS
 from decouple import config
-
+from vertican.settings.ckeditor import *
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
         'https://vaticanprojects.com',
