@@ -156,8 +156,9 @@ def httpPattern(url):
 
 
 def frontendContent(request):
-    url_path = httpPattern(request.META.get("HTTP_REFERER"))
+    url_path = httpPattern(request.META.get("HTTP_REFERER", "https://vaticanprojects.com"))
     data = list(MatrixProperty.objects.all())
+    
     context = {}
     context['wsgi_protocol'] = url_path
     context['youtube'] = YoutubeModel.objects.all().filter(is_active=True)
