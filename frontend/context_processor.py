@@ -73,13 +73,8 @@ def getAddress():
 def getAbout(request):
     about = AboutModel.objects.all()
     if about.exists():
-        d = str(about[0].site_logo.url).split("/")[1:]
-        fomatted = ""
-        for x in d:
-            fomatted += x + "/"
-        
-        return {"about":about[0].about,  'site_logo':fomatted, 'site_title':about[0].site_title, 'site_subtitle':about[0].site_subtitle}
-    return {"about":"",  'site_logo':'', 'site_title':'', 'site_subtitle':''}
+        return {"about":about[0].about}
+    return {"about":""}
 
 def getMenus():
     estate = MenusModel.objects.filter(link="/estates").order_by("index")
