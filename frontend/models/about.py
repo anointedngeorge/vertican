@@ -13,8 +13,6 @@ class AboutModel(CoreBaseModel):
     # site_title = models.CharField(max_length=250, null=True, blank=True)
     # site_subtitle = models.CharField(max_length=250, default="", blank=True)
 
-
-
     class Meta:
         verbose_name = 'About'
         verbose_name_plural = 'About'

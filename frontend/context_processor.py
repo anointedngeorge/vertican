@@ -173,6 +173,7 @@ def frontendContent(request):
         'branches': getBranches(),
         'address':getAddress(),
         'about':getAbout(request)["about"],
+        'short_footer_desc':setting_mod.first().aboutus,
         'site_logo':setting_mod.first().site_logo,
         # # 'site_logo':'logo.png',
         'site_title':setting_mod.first().site_title,
