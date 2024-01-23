@@ -8,7 +8,7 @@ from vertican.settings.ckeditor import *
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
         'https://vaticanprojects.com',
