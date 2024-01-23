@@ -7,3 +7,4 @@ from frontend.models.television import *
 from frontend.models.menus import *
 from frontend.models.downloads import *
 from frontend.models.address import *
+from frontend.models.widgets import *

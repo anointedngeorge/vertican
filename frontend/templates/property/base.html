@@ -106,17 +106,17 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav nav_1">
                             {% for menu in settings.menus %}
-                                    {% if not menu.has_children %}
-                                        {% if request.META.PATH_INFO == menu.link %}
-                            <li>
-                                <a class="m_tag active_tab" href="{{menu.link}}">{{menu.title}}</a>
-                            </li>
+                                {% if not menu.has_children %}
+                                    {% if request.META.PATH_INFO == menu.link %}
+                                <li>
+                                    <a class="m_tag active_tab" href="{{menu.link}}">{{menu.title}}</a>
+                                </li>
                             {% else %}
-                            <li>
-                                <a class="m_tag" href="{{menu.link}}">{{menu.title}}</a>
-                            </li>
+                                <li>
+                                    <a class="m_tag" href="{{menu.link}}">{{menu.title}}</a>
+                                </li>
                             {% endif %}
-                                    {%  else %}
+                            {%  else %}
                             <!-- with dropdown menue -->
                             <li class="dropdown">
                                 <a
@@ -175,7 +175,6 @@
                 <!-- /.container-fluid -->
             </nav>
         </section>
-
         {% block content %}
       
     {% endblock content %}

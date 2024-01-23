@@ -4,8 +4,8 @@ from frontend.singleton.setting_singleton import *
 # Create your models here.
 
 
-def getMenusLinks():
-    container  = [(f"/", "Index")]
+def getDropdownAsFilePath():
+    container  = [(f"/", "Index"), (f"/estates", "Show Estates")]
     import os
     p = "frontend/templates/property"
     PATH_EXISTS = os.path.exists(p)
@@ -13,11 +13,11 @@ def getMenusLinks():
         container += [(f"/{f}".split(".")[0], str(str(f).split(".")[0].replace("_", " ")).upper()) for f in os.listdir(p) if f.endswith('.html')]
     return container
 
-# print(getMenusLinks())
+# print(getDropdownAsFilePath())
 MenusModel_list = ['title','link','has_children']
 class MenusModel(CoreBaseModel):
     title = models.CharField(max_length=250, null=True, blank=True)
-    link = models.CharField(max_length=250, null=True, blank=True, choices=getMenusLinks(), verbose_name="Website page")
+    link = models.CharField(max_length=250, null=True, blank=True, choices=getDropdownAsFilePath(), verbose_name="Website page")
     index = models.IntegerField(default=0)
     has_children = models.BooleanField(default=True)
 
