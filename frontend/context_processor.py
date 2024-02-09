@@ -37,7 +37,7 @@ def getProperties():
     m_types = MatrixPropertyType.objects.all().order_by("index")
     
     for m_type in m_types:
-        propaty = MatrixProperty.objects.all().filter(property_type_id=m_type.id, active=True).order_by('index')
+        propaty = MatrixProperty.objects.all().filter(property_type_id=m_type.id, active='yes').order_by('index')
         
         if propaty.count() > 0:
             container.append({"shortname":f"{m_type.name.replace('','_')}", "name":f"{m_type.name}", "data":propaty})
