@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'consultants',
     'matrixpro',
     'frontend',
+    # 'django_quill',
 ]
 
 INSTALLED_APPS += INSTALLED_CORE_APPS
