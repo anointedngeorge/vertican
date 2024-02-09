@@ -6,7 +6,7 @@ from core.core import CoreBaseModel,CoreBaseModelWithImage
 from django.http import HttpResponse
 from choices import *
 from ckeditor.fields import RichTextField
-
+from django_quill.fields import QuillField
 
 class MatrixPropertyStatus(CoreBaseModel):
     shortname  = models.CharField(max_length=250, blank=True, null=True)
@@ -62,7 +62,6 @@ class MatrixPropertyVideos(CoreBaseModel):
     
 
 
-
 LIST_MatrixProperty = ['status','property_title','property_location','property_address', 'property_type',
             'pro_actual_price','pro_actual_qty','pro_actual_price'       
             ]
@@ -71,13 +70,13 @@ LIST_MatrixProperty = ['status','property_title','property_location','property_a
 LIST_MatrixProperty_view = 'status,property_title,property_desc,property_location,property_address,property_type, pro_actual_price,pro_actual_qty,pro_actual_price'
             
 class MatrixProperty(CoreBaseModelWithImage):
-    property_title = models.CharField(blank=True,null=True,max_length = 150)
-    property_desc = RichTextField( verbose_name='Property Descriptions', null=True )
-    property_location = models.CharField(blank=True,null=True,max_length = 150)
-    property_address = models.CharField(blank=True,null=True,max_length = 150)
-    property_type = models.ForeignKey("matrixpro.MatrixPropertyType", on_delete=models.CASCADE)
-    pro_actual_price = MoneyField(max_digits=30, decimal_places=2, default_currency='NG', null=True)
-    pro_actual_qty  = models.IntegerField(default=0, verbose_name='Property Actual qty')
+    property_title = models.CharField(blank=True, null=True, max_length=150)
+    property_desc = RichTextField(verbose_name='Property Descriptions', blank=True, null=True)
+    property_location = models.CharField(blank=True, null=True, max_length=150)
+    property_address = models.CharField(blank=True, null=True, max_length=150)
+    property_type = models.ForeignKey("matrixpro.MatrixPropertyType", on_delete=models.CASCADE, blank=True, null=True)
+    pro_actual_price = MoneyField(max_digits=30, decimal_places=2, default_currency='NG', blank=True, null=True)
+    pro_actual_qty  = models.IntegerField(default=0, verbose_name='Property Actual qty', blank=True, null=True)
     
     property_size = models.CharField(blank=True,null=True,max_length = 150)
     promo_code = models.CharField(blank=True,null=True,max_length = 150)
@@ -91,17 +90,17 @@ class MatrixProperty(CoreBaseModelWithImage):
 
     promo_duration = models.DateField(auto_now=False, null=True, blank=True)
 
-    payment_terms = models.CharField(blank=True,null=True,max_length = 150)
+    payment_terms = models.CharField(blank=True,null=True,max_length=150)
     property_state = models.CharField(max_length=150, choices=PropertyStatusChoice.choices, 
-                                      default=PropertyStatusChoice.NEW)
-    status = models.ForeignKey("matrixpro.MatrixPropertyStatus", on_delete=models.CASCADE, null=True)
+                                      default=PropertyStatusChoice.NEW, blank=True, null=True)
+    status = models.ForeignKey("matrixpro.MatrixPropertyStatus", on_delete=models.CASCADE, blank=True, null=True)
    
     active = models.CharField(null=True,choices=[('yes','Yes'), ('no','No')], max_length=100)
     is_frontend = models.CharField(null=True,choices=[('yes','Yes'), ('no','No')], max_length=100)
     posted_by = models.ForeignKey("consultants.Consultant", on_delete=models.CASCADE, blank=True, null=True)
     property_features = models.ManyToManyField("matrixpro.MatrixPropertyFeatures", blank=True)
     property_features_vid = models.ManyToManyField("matrixpro.MatrixPropertyVideos", blank=True)
-
+    index = models.IntegerField(default=1)
     class Meta:
         verbose_name = 'Property'
         verbose_name_plural = 'Properties'

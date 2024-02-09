@@ -67,3 +67,4 @@ xhtml2pdf
 xlrd
 xlwt
 gunicorn
+django-quill-editor
