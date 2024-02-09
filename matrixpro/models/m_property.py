@@ -95,7 +95,7 @@ class MatrixProperty(CoreBaseModelWithImage):
                                       default=PropertyStatusChoice.NEW, blank=True, null=True)
     status = models.ForeignKey("matrixpro.MatrixPropertyStatus", on_delete=models.CASCADE, blank=True, null=True)
    
-    active = models.CharField(null=True,choices=[('yes','Yes'), ('no','No')], max_length=100)
+    active = models.CharField(null=True, choices=[('yes','Yes'), ('no','No')], max_length=100)
     is_frontend = models.CharField(null=True,choices=[('yes','Yes'), ('no','No')], max_length=100)
     posted_by = models.ForeignKey("consultants.Consultant", on_delete=models.CASCADE, blank=True, null=True)
     property_features = models.ManyToManyField("matrixpro.MatrixPropertyFeatures", blank=True)
